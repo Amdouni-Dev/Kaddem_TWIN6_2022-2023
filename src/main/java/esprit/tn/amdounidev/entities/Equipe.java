@@ -1,5 +1,6 @@
 package esprit.tn.amdounidev.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,9 +22,17 @@ public class Equipe {
     private String nomEquipe;
     @Enumerated(EnumType.ORDINAL)
     Niveau niveau;
+    @Column(name="isDeleted")
+    private Boolean isDeleted;
+    @Column(name = "isValid")
+    private Boolean isValid;
 
+
+
+    @JsonIgnore
     @OneToOne
     private DetailEquipe detailEquipe;
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Etudiant> etudiants;
 
