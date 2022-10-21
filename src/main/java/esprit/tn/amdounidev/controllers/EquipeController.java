@@ -13,6 +13,9 @@ import java.util.List;
 @RequestMapping("/")
 @RestController
 public class EquipeController {
+
+    // hoiiiiiiiiiiiiiii
+
     @Autowired
     EquipeServiceImpl equipeService;
     @Autowired
