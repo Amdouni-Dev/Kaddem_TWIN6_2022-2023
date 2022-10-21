@@ -14,8 +14,6 @@ import java.util.List;
 @RestController
 public class EquipeController {
 
-    // hoiiiiiiiiiiiiiii
-
     @Autowired
     EquipeServiceImpl equipeService;
     @Autowired
