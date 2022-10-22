@@ -3,6 +3,8 @@ package esprit.tn.amdounidev.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -13,7 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Projet {
+public class Projet  implements Serializable  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idProjet")
