@@ -11,45 +11,45 @@ import java.util.List;
 public class TacheService implements  ITacheService {
 
     @Autowired //ou @Inject
-    TacheRepository TacheRep;
+    TacheRepository ts;
     @Override
     public Tache addTache(Tache t) {
-        return  TacheRep.save(t);
+        return  ts.save(t);
     }
 
     @Override
     public List<Tache> addTache(List<Tache> listTache) {
-        return TacheRep.saveAll(listTache);
+        return ts.saveAll(listTache);
     }
 
     @Override
     public Tache updateTache(Tache t) {
-        return TacheRep.save(t);
+        return ts.save(t);
     }
 
     @Override
     public List<Tache> updateTache(List<Tache> listTache) {
-        return TacheRep.saveAll(listTache);
+        return ts.saveAll(listTache);
     }
 
     @Override
     public void deleteTache(Long id) {
-        TacheRep.deleteById(id);
+        ts.deleteById(id);
     }
 
     @Override
     public void deleteTache(Tache t) {
-        TacheRep.delete(t);
+        ts.delete(t);
     }
 
     @Override
     public List<Tache> findAllTache() {
-        return TacheRep.findAll();
+        return ts.findAll();
     }
 
     @Override
     public Tache findTacheById(Long id) {
-        return TacheRep.findById(id).orElse(new Tache());
+        return ts.findById(id).orElse(new Tache());
     }
     
     

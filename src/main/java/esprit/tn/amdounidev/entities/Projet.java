@@ -1,21 +1,21 @@
 package esprit.tn.amdounidev.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
 import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Projet  implements Serializable  {
+public class Projet implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idProjet")
@@ -34,6 +34,7 @@ public class Projet  implements Serializable  {
     private Date dateFinP;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
+    @JsonIgnore
     private Set<Tache> taches;
 
 }

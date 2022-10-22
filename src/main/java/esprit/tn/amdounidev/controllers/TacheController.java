@@ -8,46 +8,47 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("Tache")
+
 public class TacheController {
     @Autowired
-    ITacheService TacheS;
+    ITacheService ts;
     @PostMapping("addTache")
     public Tache addTache(@RequestBody Tache t) {
-        return  TacheS.addTache(t);
+        return  ts.addTache(t);
     }
 
     @PostMapping("addTaches")
     public List<Tache> addTache(@RequestBody List<Tache> listTache) {
-        return TacheS.addTache(listTache);
+        return ts.addTache(listTache);
     }
 
     @PutMapping("updateTache")
     public Tache updateTache(@RequestBody Tache t) {
-        return  TacheS.addTache(t);
+        return  ts.addTache(t);
     }
 
     @PutMapping("updateTaches")
     public List<Tache> updateTache(@RequestBody List<Tache> listTache) {
-        return TacheS.addTache(listTache);
+        return ts.addTache(listTache);
     }
 
     @DeleteMapping("deleteTachebyId")
     public void deleteTache( @RequestParam Long id) {
-        TacheS.deleteTache(id);
+        ts.deleteTache(id);
     }
 
     @DeleteMapping("deleteTache")
     public void deleteTache( @RequestBody Tache t) {
-        TacheS.deleteTache(t);
+        ts.deleteTache(t);
     }
 
     @GetMapping("findAllTaches")
     public List<Tache> findAllTache() {
-        return TacheS.findAllTache();
+        return ts.findAllTache();
     }
 
     @GetMapping("findTacheById")
     public Tache findTacheById( @RequestParam Long id) {
-        return TacheS.findTacheById(id);
+        return ts.findTacheById(id);
     }
 }
