@@ -4,9 +4,11 @@ package esprit.tn.amdounidev.Services;
 import esprit.tn.amdounidev.Repository.DepartementRepository;
 import esprit.tn.amdounidev.entities.Departement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DepartementService implements  IDepartementService{
 
 
