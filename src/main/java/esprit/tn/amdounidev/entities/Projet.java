@@ -1,0 +1,37 @@
+package esprit.tn.amdounidev.entities;
+
+import lombok.*;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.Set;
+
+@Entity
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
+public class Projet {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="idProjet")
+    private Long idProjet;
+    @Column(name="nomProjet")
+    private String nomProjet;
+    @Column(name="dureeProjet")
+    private String dureeProjet;
+    @Enumerated(EnumType.ORDINAL)
+    Type type;
+    @Temporal (TemporalType.DATE)
+    @Column(name="dateDebutP")
+    private Date dateDebutP;
+    @Temporal (TemporalType.DATE)
+    @Column(name="dateFinP")
+    private Date dateFinP;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
+    private Set<Tache> taches;
+
+}
