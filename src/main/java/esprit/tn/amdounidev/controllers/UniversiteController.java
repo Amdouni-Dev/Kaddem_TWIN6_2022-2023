@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 //@Component ou @ResponseBody
 //@Controller ou @ResponseBody
+@RequestMapping("Universite")
 public class UniversiteController {
 
     @Autowired
