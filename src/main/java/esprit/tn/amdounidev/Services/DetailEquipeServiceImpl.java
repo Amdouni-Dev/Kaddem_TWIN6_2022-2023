@@ -3,9 +3,10 @@ package esprit.tn.amdounidev.Services;
 import esprit.tn.amdounidev.Repository.DetailEquipeRepository;
 import esprit.tn.amdounidev.entities.DetailEquipe;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class DetailEquipeServiceImpl implements DetailEquipeService {
     @Autowired //ou @Inject
     DetailEquipeRepository dr;

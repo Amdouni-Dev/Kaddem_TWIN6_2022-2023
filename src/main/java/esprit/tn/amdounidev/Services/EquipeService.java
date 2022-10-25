@@ -1,13 +1,16 @@
 package esprit.tn.amdounidev.Services;
 
+import esprit.tn.amdounidev.entities.DetailEquipe;
 import esprit.tn.amdounidev.entities.Equipe;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface EquipeService {
 
-    Equipe saveEquipe (Equipe equipe);
+    void saveEquipe (Equipe equipe);
 
 
     Equipe updateEquipe (Equipe equipe,Long idE);
