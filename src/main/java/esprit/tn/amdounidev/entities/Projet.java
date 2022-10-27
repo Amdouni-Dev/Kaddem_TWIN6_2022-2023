@@ -24,8 +24,8 @@ public class Projet implements Serializable {
     private String nomProjet;
     @Column(name="dureeProjet")
     private String dureeProjet;
-    @Enumerated(EnumType.ORDINAL)
-    Type type;
+    @Enumerated(EnumType.STRING)
+    Type typeProjet;
     @Temporal (TemporalType.DATE)
     @Column(name="dateDebutP")
     private Date dateDebutP;

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("Projet")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ProjetController {
     @Autowired
     IProjetService ps;
@@ -31,8 +32,8 @@ public class ProjetController {
         return ps.addProjet(listProjet);
     }
 
-    @DeleteMapping("deleteProjetbyId")
-    public void deleteProjet( @RequestParam Long id) {
+    @DeleteMapping("deleteProjetbyId/{idProjet}")
+    public void deleteProjet( @PathVariable("idProjet") Long id) {
         ps.deleteProjet(id);
     }
 
@@ -46,8 +47,8 @@ public class ProjetController {
         return ps.findAllProjet();
     }
 
-    @GetMapping("findProjetById")
-    public Projet findProjetById( @RequestParam Long id) {
+    @GetMapping("findProjetById/{idProjet}")
+    public Projet findProjetById( @RequestParam("idProjet") Long id) {
         return ps.findProjetById(id);
     }
 }
