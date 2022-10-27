@@ -18,12 +18,12 @@ public class UniversiteController {
 
 
 
-    @PutMapping("addUniversite")
+    @PostMapping("addUniversite")
     public Universite addUniversite(@RequestBody Universite d) {
         return  us.addUniversite(d);
     }
 
-    @PutMapping("addUniversites")
+    @PostMapping("addUniversites")
     public List<Universite> addUniversite(@RequestBody List<Universite> listDepartment) {
         return us.addUniversite(listDepartment);
     }
