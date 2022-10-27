@@ -13,19 +13,20 @@ public class DepartementController {
 
     @Autowired
     IDepartementService ds;
-@PostMapping("addDepartment")
+
+    @PostMapping("addDepartment")
     public Departement addDepartment(@RequestBody Departement d) {
-        return  ds.addDepartment(d);
+        return ds.addDepartment(d);
     }
 
     @PostMapping("addDepartments")
-    public List<Departement> addDepartment( @RequestBody List<Departement> listDepartment) {
+    public List<Departement> addDepartment(@RequestBody List<Departement> listDepartment) {
         return ds.addDepartment(listDepartment);
     }
 
     @PutMapping("updateDepartment")
     public Departement updateDepartment(@RequestBody Departement d) {
-        return  ds.addDepartment(d);
+        return ds.addDepartment(d);
     }
 
     @PutMapping("updateDepartments")
@@ -33,13 +34,13 @@ public class DepartementController {
         return ds.addDepartment(listDepartment);
     }
 
-    @DeleteMapping ("deleteDepartmentbyId")
-    public void deleteDepartment( @RequestParam Long id) {
+    @DeleteMapping("deleteDepartmentbyId")
+    public void deleteDepartment(@RequestParam Long id) {
         ds.deleteDepartment(id);
     }
 
     @DeleteMapping("deleteDepartment")
-    public void deleteDepartment( @RequestBody Departement d) {
+    public void deleteDepartment(@RequestBody Departement d) {
         ds.deleteDepartment(d);
     }
 
@@ -49,7 +50,7 @@ public class DepartementController {
     }
 
     @GetMapping("findDepartmentById")
-    public Departement findDepartmentById( @RequestParam Long id) {
+    public Departement findDepartmentById(@RequestParam Long id) {
         return ds.findDepartmentById(id);
     }
 }

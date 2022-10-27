@@ -47,6 +47,11 @@ public class UniversiteService implements IUniversiteService{
     }
 
     @Override
+    public Universite findBynomUniversite(String Nom) {
+        return dr.findBynomUniversite(Nom);
+    }
+
+    @Override
     public Universite findUniversiteById(Long id) {
         return dr.findById(id).orElse(new Universite());
     }

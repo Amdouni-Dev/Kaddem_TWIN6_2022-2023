@@ -16,8 +16,6 @@ public class UniversiteController {
     @Autowired
     IUniversiteService us;
 
-
-
     @PostMapping("addUniversite")
     public Universite addUniversite(@RequestBody Universite d) {
         return  us.addUniversite(d);
@@ -58,4 +56,8 @@ public class UniversiteController {
         return us.findUniversiteById(id);
     }
 
+    @GetMapping("findUniversiteByNom")
+    public Universite findUniversiteById( @RequestParam String Nom) {
+        return us.findBynomUniversite(Nom);
+    }
 }

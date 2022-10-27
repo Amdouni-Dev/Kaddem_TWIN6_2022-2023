@@ -9,7 +9,7 @@ import java.util.List;
 public interface UniversiteRepository extends JpaRepository<Universite,Long> {
 
     //select * from Universite where nomUniversite=?
-    List<Universite> findBynomUniversite(String nomUniversite);
+    Universite findBynomUniversite(String nomUniversite);
 
 /*
     List<Universite> getBydateFinC(Date dateFinC);

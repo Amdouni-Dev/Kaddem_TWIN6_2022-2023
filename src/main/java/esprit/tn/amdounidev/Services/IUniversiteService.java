@@ -22,4 +22,7 @@ public interface IUniversiteService {
     List<Universite> findAllUniversite();
 
     Universite findUniversiteById(Long id);
-}
+
+    Universite findBynomUniversite(String Nom);
+
+    }
