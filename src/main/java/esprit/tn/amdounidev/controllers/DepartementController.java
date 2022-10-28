@@ -2,6 +2,7 @@ package esprit.tn.amdounidev.controllers;
 
 import esprit.tn.amdounidev.Services.IDepartementService;
 import esprit.tn.amdounidev.entities.Departement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("Departement")
+@Tag(name ="Departement" ,description = "Gestion de Departement ")
 public class DepartementController {
 
     @Autowired
