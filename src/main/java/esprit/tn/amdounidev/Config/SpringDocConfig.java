@@ -53,7 +53,7 @@ public class SpringDocConfig {
     public GroupedOpenApi DepartementPublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Departement API")
+                .group("Only Departement Management API")
                 .pathsToMatch("/Departement/**")
                 .pathsToExclude("**")
                 .build();
@@ -63,7 +63,7 @@ public class SpringDocConfig {
     public GroupedOpenApi ContartPublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Contart API")
+                .group("Only Contart Management API")
                 .pathsToMatch("/Contart/**")
                 .pathsToExclude("**")
                 .build();
@@ -73,7 +73,7 @@ public class SpringDocConfig {
     public GroupedOpenApi DetailEquipePublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product DetailEquipe API")
+                .group("Only DetailEquipe Management API")
                 .pathsToMatch("/DetailEquipe/**")
                 .pathsToExclude("**")
                 .build();
@@ -83,7 +83,7 @@ public class SpringDocConfig {
     public GroupedOpenApi equipePublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product equipe API")
+                .group("Only equipe Management API")
                 .pathsToMatch("/equipe/**")
                 .pathsToExclude("**")
                 .build();
@@ -93,7 +93,7 @@ public class SpringDocConfig {
     public GroupedOpenApi EtudiantPublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Etudiant API")
+                .group("Only Etudiant Management API")
                 .pathsToMatch("/Etudiant/**")
                 .pathsToExclude("**")
                 .build();
@@ -104,7 +104,7 @@ public class SpringDocConfig {
     public GroupedOpenApi ProjetPublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Projet API")
+                .group("Only Projet Management API")
                 .pathsToMatch("/Projet/**")
                 .pathsToExclude("**")
                 .build();
@@ -114,7 +114,7 @@ public class SpringDocConfig {
     public GroupedOpenApi ReponsePublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Reponse API")
+                .group("Only Reponse Management API")
                 .pathsToMatch("/Reponse/**")
                 .pathsToExclude("**")
                 .build();
@@ -124,7 +124,7 @@ public class SpringDocConfig {
     public GroupedOpenApi TachePublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Tache API")
+                .group("Only Tache Management API")
                 .pathsToMatch("/Tache/**")
                 .pathsToExclude("**")
                 .build();
@@ -134,7 +134,7 @@ public class SpringDocConfig {
     public GroupedOpenApi ThreadPublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product Thread API")
+                .group("Only Thread Management API")
                 .pathsToMatch("/Thread/**")
                 .pathsToExclude("**")
                 .build();
@@ -143,7 +143,7 @@ public class SpringDocConfig {
     public GroupedOpenApi ThreadTypePublic() {
         return GroupedOpenApi.builder()
 
-                .group("Only Product ThreadType API")
+                .group("Only ThreadType Management API")
                 .pathsToMatch("/ThreadType/**")
                 .pathsToExclude("**")
                 .build();
