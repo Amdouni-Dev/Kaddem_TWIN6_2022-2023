@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("Tache")
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class TacheController {
     @Autowired
     ITacheService ts;
@@ -32,8 +32,8 @@ public class TacheController {
         return ts.addTache(listTache);
     }
 
-    @DeleteMapping("deleteTachebyId")
-    public void deleteTache( @RequestParam Long id) {
+    @DeleteMapping("deleteTachebyId/{idTache}")
+    public void deleteTache( @PathVariable("idTache") Long id) {
         ts.deleteTache(id);
     }
 
@@ -47,8 +47,8 @@ public class TacheController {
         return ts.findAllTache();
     }
 
-    @GetMapping("findTacheById")
-    public Tache findTacheById( @RequestParam Long id) {
+    @GetMapping("findTacheById/{idTache}")
+    public Tache findTacheById( @RequestParam("idTache") Long id) {
         return ts.findTacheById(id);
     }
 }
