@@ -1,19 +1,22 @@
 package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.Repository.UniversiteRepository;
+import esprit.tn.amdounidev.entities.Equipe;
 import esprit.tn.amdounidev.entities.Universite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class UniversiteService implements IUniversiteService{
+public class UniversiteService implements IUniversiteService {
     @Autowired //ou @Inject
     UniversiteRepository dr;
+
     @Override
     public Universite addUniversite(Universite d) {
-        return  dr.save(d);
+        return dr.save(d);
     }
 
     @Override
@@ -22,8 +25,17 @@ public class UniversiteService implements IUniversiteService{
     }
 
     @Override
-    public Universite updateUniversite(Universite d) {
-        return dr.save(d);
+    public Universite updateUniversite(Universite universite, long id) {
+        Optional<Universite> updateUniversite = dr.findById(id);
+        if (updateUniversite.isPresent()) {
+            long i = universite.getIdUniversite();
+            System.out.println("sasa"+i);
+
+            universite.setIdUniversite(id);
+            universite.setNomUniversite(universite.getNomUniversite());
+            return dr.save(universite);
+        }
+        return null;
     }
 
     @Override

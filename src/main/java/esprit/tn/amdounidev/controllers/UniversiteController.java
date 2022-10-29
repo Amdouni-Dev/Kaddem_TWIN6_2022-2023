@@ -20,6 +20,7 @@ import java.util.List;
 //@Controller ou @ResponseBody
 @RequestMapping("Universite")
 @Tag(name ="Universite" ,description = "Gestion de l'Universite ")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UniversiteController {
 
     @Autowired
@@ -56,9 +57,9 @@ public class UniversiteController {
             @ApiResponse(responseCode = "404", description = "Modifier failed",content = @Content)
     })
 
-    @PutMapping("updateUniversite")
-    public Universite updateUniversite(@RequestBody Universite d) {
-        return  us.updateUniversite(d);
+    @PutMapping("updateUniversite/{id}")
+    public Universite updateUniversite(@RequestBody Universite universite, @PathVariable Long id ) {
+        return  us.updateUniversite(universite,id);
     }
 
     @Operation(summary = "Update list Universite", description = "Modifier une liste des Universites ")
@@ -80,8 +81,8 @@ public class UniversiteController {
             @ApiResponse(responseCode = "404", description = "Supp failed",content = @Content)
     })
 
-    @DeleteMapping("deleteUniversite")
-    public void deleteUniversite( @RequestParam Long id) {
+    @DeleteMapping("deleteUniversite/{id}")
+    public void deleteUniversite( @PathVariable Long id) {
         us.deleteUniversite(id);
     }
 
@@ -105,7 +106,7 @@ public class UniversiteController {
             @ApiResponse(responseCode = "404", description = "Universite not found",content = @Content)
     })
 
-    @GetMapping("findAllUniversite")
+    @GetMapping("All")
     public List<Universite> findAllUniversite() {
         return us.findAllUniversite();
     }
