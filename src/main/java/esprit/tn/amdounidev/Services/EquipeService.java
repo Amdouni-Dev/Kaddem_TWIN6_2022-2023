@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface EquipeService {
 
     void saveEquipe (Equipe equipe);
+    void saveEquipeAndDetail(Equipe equipe,DetailEquipe detailEquipe);
 
 
     Equipe updateEquipe (Equipe equipe,Long idE);

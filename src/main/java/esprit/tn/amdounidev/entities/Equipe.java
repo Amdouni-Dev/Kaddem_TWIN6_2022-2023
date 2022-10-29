@@ -27,8 +27,8 @@ public class Equipe implements Serializable {
     private Boolean isDeleted;
     @Column(name = "isValid")
     private Boolean isValid;
-
-
+  //  @Column(name="nombreMaxParticipant")
+    //private int nombreMaxParticipant;
 
     @JsonIgnore
     @OneToOne

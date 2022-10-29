@@ -40,7 +40,7 @@ public  List<DetailEquipe> equipeAndDetails(){
      }
 
 
-    @PostMapping("/changeV/{idEquipe}/{idDetail}")
+    @GetMapping("/changeV/{idEquipe}/{idDetail}")
     public void ChangeValid(@PathVariable("idEquipe") Long id,@PathVariable("idDetail") Long idDetail){
 
  DetailEquipe detailEquipe =detailEquipeRepository.findById(idDetail).orElseThrow();
@@ -81,16 +81,24 @@ public  List<DetailEquipe> equipeAndDetails(){
             }
     }
     @PostMapping("/AddEquipe")
-    public Equipe AddEquipe(@RequestBody Equipe equipe){
+    public void AddEquipe(@RequestBody Equipe equipe){
 
        equipeService.saveEquipe(equipe);
-       return equipe;
+
+    }
+    @PostMapping("/AddEquipeAndDetail")
+    public void AddEquipeAndDetail(@RequestBody Equipe equipe,@RequestBody DetailEquipe detailEquipe){
+
+        equipeService.saveEquipeAndDetail(equipe,detailEquipe);
+
     }
 
+   // @PutMapping("updateEquipe/{id}")
     @PutMapping("updateEquipe/{id}")
-    public Equipe updateEquipe(@RequestBody Equipe equipe, @PathVariable Long id  ){
+    public void updateEquipe(@RequestBody Equipe equipe, @PathVariable Long id  ){
 
-        return equipeService.updateEquipe(equipe,id);
+          equipeService.updateEquipe(equipe,id);
+
     }
 
     @GetMapping("equipe/{id}")
@@ -98,6 +106,9 @@ public  List<DetailEquipe> equipeAndDetails(){
 
         return repo.findById(id);
     }
-
+@DeleteMapping("deleteEquipe/{id}")
+public void deleteEquipeById(@PathVariable Long id){
+        equipeService.deleteEquipeById(id);
+}
 
 }
