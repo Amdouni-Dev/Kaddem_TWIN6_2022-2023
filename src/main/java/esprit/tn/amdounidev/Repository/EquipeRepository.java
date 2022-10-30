@@ -21,6 +21,8 @@ public interface EquipeRepository extends CrudRepository<Equipe,Long> {
 
     @Query("SELECT e FROM Equipe e WHERE e.nomEquipe = ?1")
     public Equipe findByNom(String nomEquipe);
+    @Query("SELECT e FROM Equipe e WHERE e.idEquipe = ?1")
+    public Equipe findByIdEquipe(Long nomEquipe);
 
     @Query("SELECT e.detailEquipe.idDetailEquipe FROM Equipe e ")
     public List<Equipe> findAllEquipes();

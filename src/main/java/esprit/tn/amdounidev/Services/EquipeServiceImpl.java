@@ -1,19 +1,18 @@
 package esprit.tn.amdounidev.Services;
 
+import esprit.tn.amdounidev.Exceptions.EquipeNotFoundException;
 import esprit.tn.amdounidev.Repository.DetailEquipeRepository;
 import esprit.tn.amdounidev.Repository.EquipeRepository;
 import esprit.tn.amdounidev.entities.DetailEquipe;
 import esprit.tn.amdounidev.entities.Equipe;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
-
+@Slf4j
 @Service
 public class EquipeServiceImpl implements EquipeService {
     @Autowired
@@ -35,6 +34,13 @@ public class EquipeServiceImpl implements EquipeService {
        equipe.setIsDeleted(false);
 
  equipeRepository.save(equipe);
+ log.info("Equipe ajouté :\n" +
+         "Nom d\'equipe "+equipe.getNomEquipe() +" " +
+         "Niveau " +equipe.getNiveau()+" "+
+         "Etat de suppression : non supprimé" +
+         "Etat de validation : non validé " +
+         "Etat Ajouté par defaut(false)" +
+         "Niveau par defaut junior ! ." );
     }
 
     @Override
@@ -76,20 +82,7 @@ public class EquipeServiceImpl implements EquipeService {
 
 
 
-    /*
-    * @PutMapping("/employees/{id}")
-	public ResponseEntity<Employee> updateEmployee(@PathVariable Long id, @RequestBody Employee employeeDetails){
-		Employee employee = employeeRepository.findById(id)
-				.orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id :" + id));
 
-		employee.setFirstName(employeeDetails.getFirstName());
-		employee.setLastName(employeeDetails.getLastName());
-		employee.setEmailId(employeeDetails.getEmailId());
-
-		Employee updatedEmployee = employeeRepository.save(employee);
-		return ResponseEntity.ok(updatedEmployee);
-	}
-    * */
 
 
     @Override
@@ -113,8 +106,8 @@ public class EquipeServiceImpl implements EquipeService {
     }
 
     @Override
-    public Optional<Equipe> findById(Long id) {
-        return equipeRepository.findById(id);
+    public Equipe findById(Long id) {
+        return equipeRepository.findById(id).orElseThrow(() -> new EquipeNotFoundException(id));
     }
 
     @Override

@@ -18,7 +18,7 @@ public class SpringDocConfig {
 
     public Info infoaPl() {
 
-        return new  Info().title("SpringDoc - Demo Saha loled").description("Aziz Ben Ismail - Eya ben Amor - Amen jouini - Yassmine mouadeb- aziz ben hmida - moune amdouni").contact(contactAPI());
+        return new  Info().title("SpringDoc - Demo Saha loled").description("Aziz Ben Ismail - Eya ben Amor - Amen jouini - Yassmine mouadeb- aziz ben hmida - Amdouni Mounaaaaa").contact(contactAPI());
 
     }
 
