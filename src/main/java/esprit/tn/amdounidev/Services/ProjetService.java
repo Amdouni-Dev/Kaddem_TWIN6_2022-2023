@@ -2,11 +2,12 @@ package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.entities.Projet;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 public class ProjetService implements IProjetService {
 
@@ -14,41 +15,56 @@ public class ProjetService implements IProjetService {
     ProjetRepository pr;
     @Override
     public Projet addProjet(Projet p) {
+
+        log.info("Ajout d'un projet");
         return  pr.save(p);
     }
 
     @Override
     public List<Projet> addProjet(List<Projet> listProjet) {
+
+        log.info("Ajout d'une liste de projets");
         return pr.saveAll(listProjet);
     }
 
     @Override
     public Projet updateProjet(Projet p) {
+
+        log.info("modification d'un projet");
         return pr.save(p);
     }
 
     @Override
     public List<Projet> updateProjet(List<Projet> listProjet) {
+
+        log.info("modification de liste de projets");
         return pr.saveAll(listProjet);
     }
 
     @Override
     public void deleteProjet(Long id) {
+
+        log.info("suppression d'un projet par id");
         pr.deleteById(id);
     }
 
     @Override
     public void deleteProjet(Projet p) {
+
+        log.info("suppression d'un projet");
         pr.delete(p);
     }
 
     @Override
     public List<Projet> findAllProjet() {
+        log.info("récuperation de tous les projets");
         return pr.findAll();
     }
 
     @Override
     public Projet findProjetById(Long id) {
+
+        log.info("récuperation d'un projet par id");
         return pr.findById(id).orElse(new Projet());
     }
 }
