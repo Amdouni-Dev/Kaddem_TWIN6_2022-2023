@@ -11,7 +11,7 @@ public interface IUniversiteService {
 
     List<Universite> addUniversite(List<Universite> listUniversite);
 
-    Universite updateUniversite(Universite d);
+    Universite updateUniversite(Universite d,long id);
 
     List<Universite> updateUniversite(List<Universite> listUniversite);
 
