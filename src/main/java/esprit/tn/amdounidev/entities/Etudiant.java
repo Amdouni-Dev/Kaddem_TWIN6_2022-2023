@@ -35,5 +35,7 @@ public class Etudiant implements Serializable {
     private Set<Equipe> equipes;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
     private Set<Thread> threads;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")
+    private Set<Reclamation> reclamations;
 
 }
