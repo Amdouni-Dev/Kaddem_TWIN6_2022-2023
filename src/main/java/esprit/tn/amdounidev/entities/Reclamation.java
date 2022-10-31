@@ -8,7 +8,7 @@ import java.util.Date;
 @Entity
 @Getter
 @Setter
-@Builder // bech nasna3 ay type de constructeur
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
