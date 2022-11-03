@@ -51,9 +51,11 @@ public class ProjetController {
             @ApiResponse(responseCode = "404", description = "update failed",content = @Content)
     })
     @PutMapping("updateProjet")
-    public Projet updateProjet(@RequestBody Projet p) {
-        return  ps.addProjet(p);
+    public Projet updateProjet(@RequestBody Projet p ) {
+
+        return ps.updateProjet(p);
     }
+
 
 
     @Operation(summary = "update List Project", description = "modifier  des projets ")
@@ -113,8 +115,8 @@ public class ProjetController {
             @ApiResponse(responseCode = "404", description = "Get not found",content = @Content)
     })
 
-    @GetMapping("findProjetById/{idProjet}")
-    public Projet findProjetById( @RequestParam("idProjet") Long id) {
+    @GetMapping("findProjectById/{idProjet}")
+    public Projet findProjetById(@PathVariable("idProjet") Long id) {
         return ps.findProjetById(id);
     }
 }
