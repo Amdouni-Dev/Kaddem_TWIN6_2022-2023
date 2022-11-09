@@ -1,6 +1,7 @@
 package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.entities.Contrat;
+import esprit.tn.amdounidev.entities.Etudiant;
 
 import java.util.List;
 
@@ -12,4 +13,7 @@ public interface IContratService {
     void deleteContrat(Contrat contrat);
     List<Contrat> listeContrats();
         Contrat findContratById(Long id);
+
+    public Etudiant AddandassigntEtudianttoequipeandcontract(Etudiant e, Integer IDContrat, Integer idEquipe);
+
 }

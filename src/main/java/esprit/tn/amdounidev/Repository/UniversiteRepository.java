@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface UniversiteRepository extends JpaRepository<Universite,Long> {
 
+    //Jpql Base sur les nom des attribus dans l'entite  et non pas dasn la base
     //select * from Universite where nomUniversite=?
     Universite findBynomUniversite(String nomUniversite);
+
 
 /*
     List<Universite> getBydateFinC(Date dateFinC);

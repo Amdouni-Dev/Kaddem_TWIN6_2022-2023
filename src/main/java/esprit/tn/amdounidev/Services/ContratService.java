@@ -2,6 +2,7 @@ package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.Repository.ContratRepository;
 import esprit.tn.amdounidev.entities.Contrat;
+import esprit.tn.amdounidev.entities.Etudiant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,5 +56,10 @@ public class ContratService implements IContratService{
     @Override
     public Contrat findContratById(Long id) {
         return contratRepository.findById(id).orElse(new Contrat());
+    }
+
+    @Override
+    public Etudiant AddandassigntEtudianttoequipeandcontract(Etudiant e, Integer IDContrat, Integer idEquipe) {
+        return null;
     }
 }

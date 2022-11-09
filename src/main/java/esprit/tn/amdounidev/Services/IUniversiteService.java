@@ -25,4 +25,14 @@ public interface IUniversiteService {
 
     Universite findBynomUniversite(String Nom);
 
+    public void assignUniversitetoDepartement(Integer idUniversite,Integer idDepartement);
+
+    public void desaffectUniversitetoDepartement(Integer idUniversite, Integer idDepartement);
+
+    public void aassignUniversitetoDepartement(Integer idUniversite, Integer idDepartement);
+
+    public void assignUniversitetolistDepartement(Integer idUniversite, List<Integer> ListidDepartement);
+
+
+
     }
