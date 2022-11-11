@@ -1,6 +1,8 @@
 package esprit.tn.amdounidev.controllers;
 
+import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Services.ITacheService;
+import esprit.tn.amdounidev.entities.Departement;
 import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,7 +22,8 @@ import java.util.List;
 public class TacheController {
     @Autowired
     ITacheService ts;
-
+    @Autowired //ou @Inject
+    ProjetRepository pr;
 
 
     @Operation(summary = "Add Task", description = "Ajouter une tache")
@@ -120,5 +123,26 @@ public class TacheController {
     @GetMapping("findTacheById/{idTache}")
     public Tache findTacheById( @RequestParam("idTache") Long id) {
         return ts.findTacheById(id);
+    }
+
+
+    @PostMapping("affectProjet/{idProjet}/{idTache}")
+    public void affecterProjectToTache(@PathVariable("idProjet") Long idProjet,@PathVariable("idTache") Long idTache) {
+
+        ts.aassignProjetToTache(idProjet,idTache);
+
+    }
+
+
+
+
+
+
+
+    @GetMapping("findProjet/{idTache}")
+    public Projet findProjet(@PathVariable("idTache") Long idTache) {
+
+        return  ts.getProjetByTache(idTache);
+
     }
 }

@@ -1,7 +1,11 @@
 package esprit.tn.amdounidev.Services;
 
+import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Repository.TacheRepository;
+import esprit.tn.amdounidev.entities.Departement;
+import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
+import esprit.tn.amdounidev.entities.Universite;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +17,10 @@ public class TacheService implements  ITacheService {
 
     @Autowired //ou @Inject
     TacheRepository ts;
+
+    @Autowired //ou @Inject
+    ProjetRepository pr;
+
     @Override
     public Tache addTache(Tache t) {
 
@@ -65,6 +73,36 @@ public class TacheService implements  ITacheService {
         log.info("récuperation d'une tache par id");
         return ts.findById(id).orElse(new Tache());
     }
-    
-    
+
+    @Override
+    public void aassignProjetToTache(Long idProjet, Long idTache) {
+        Projet p= pr.findByIdProjet(idProjet);
+        Tache t=ts.findByIdTache(idTache);
+        t.setProjet(p);
+
+        ts.save(t);
+
+    }
+
+
+    @Override
+    public void assignProjetToListTache(Long idProjet, List<Long> ListIdTaches) {
+        Projet p= pr.findByIdProjet(idProjet);
+        for (Long i: ListIdTaches )
+        {
+            Tache t=ts.findByIdTache(i);
+            p.getTaches().add(t);
+        }
+        pr.save(p);
+    }
+
+
+
+    @Override
+    public Projet getProjetByTache(Long idTache) {
+        Tache t=ts.findByIdTache(idTache);
+        return t.getProjet();
+    }
+
+
 }

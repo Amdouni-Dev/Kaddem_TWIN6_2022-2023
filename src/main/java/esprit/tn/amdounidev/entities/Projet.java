@@ -7,6 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,8 +34,8 @@ public class Projet implements Serializable {
     @Column(name="dateFinP")
     private Date dateFinP;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "projet")
-    @JsonIgnore
-    private Set<Tache> taches;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "projet",fetch = FetchType.EAGER)
+    private List<Tache> taches;
 
 }
