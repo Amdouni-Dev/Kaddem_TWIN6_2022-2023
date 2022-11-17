@@ -1,6 +1,8 @@
 package esprit.tn.amdounidev.controllers;
 
 import esprit.tn.amdounidev.Services.IProjetService;
+import esprit.tn.amdounidev.Services.ITacheService;
+import esprit.tn.amdounidev.entities.Departement;
 import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
 import io.swagger.v3.oas.annotations.Operation;
@@ -20,7 +22,7 @@ import java.util.List;
 public class ProjetController {
     @Autowired
     IProjetService ps;
-
+ITacheService ts;
     @Operation(summary = "Add Project", description = "Ajouter un projet")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "add successfully",content = { @Content(mediaType = "application/json",schema = @Schema(implementation = Tache.class)) }),
@@ -29,7 +31,13 @@ public class ProjetController {
     })
     @PostMapping("addProjet")
     public Projet addProjet(@RequestBody Projet p) {
-        return  ps.addProjet(p);
+        for (Tache t: p.getTaches() )
+        {
+            t.setProjet(p);
+        }
+
+        return     ps.addProjet(p);
+
     }
 
 
@@ -119,4 +127,20 @@ public class ProjetController {
     public Projet findProjetById(@PathVariable("idProjet") Long id) {
         return ps.findProjetById(id);
     }
+
+
+
+    @PostMapping("affectTache/{idProjet}/{idTache}")
+    public void affecterTacheToProjet(@PathVariable("idProjet") Long idProjet,@PathVariable("idTache") Long idTache) {
+
+             ps.aassignProjetToTache(idProjet,idTache);
+
+    }
+    @GetMapping("findTachesByProjet/{idProjet}")
+    public List<Tache> findTachesByProjet(@PathVariable("idProjet") Long idProjet) {
+
+      return ps.getTachesByProjet(idProjet);
+
+    }
+
 }

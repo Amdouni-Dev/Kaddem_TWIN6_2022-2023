@@ -2,6 +2,7 @@ package esprit.tn.amdounidev.Repository;
 
 import esprit.tn.amdounidev.entities.Universite;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.Date;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 public interface UniversiteRepository extends JpaRepository<Universite,Long> {
 
     //Jpql Base sur les nom des attribus dans l'entite  et non pas dasn la base
-    //select * from Universite where nomUniversite=?
+    @Query(value = "select * from Universite where nomUniversite = ?1",nativeQuery = true)
     Universite findBynomUniversite(String nomUniversite);
 
 
@@ -20,4 +21,5 @@ public interface UniversiteRepository extends JpaRepository<Universite,Long> {
     List<Universite> findByspecialite(String specialite);
     List<Universite> findByMontantCBetween(float min,float Max);
  */
+
 }
