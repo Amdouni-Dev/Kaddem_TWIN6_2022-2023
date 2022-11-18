@@ -118,10 +118,10 @@ public class UniversiteController {
        @ApiResponse(responseCode = "404", description = "Universite not found",content = @Content)
     })
 
-    @GetMapping("findUniversiteById")
-    public Universite findUniversiteById(@Parameter(description = "id of book to be searched")  @RequestParam Long id ) {
-        return us.findUniversiteById(id);
-    }
+        @GetMapping("findUniversiteById")
+        public Universite findUniversiteById(@Parameter(description = "id of book to be searched")  @RequestParam Long id ) {
+            return us.findUniversiteById(id);
+        }
 
     @Operation(summary = "Get Universites par son Nom", description = "Returns Universites specifique")
     @ApiResponses(value = {
@@ -134,4 +134,10 @@ public class UniversiteController {
     public Universite findUniversiteById( @RequestParam String Nom) {
         return us.findBynomUniversite(Nom);
     }
+
+    @PostMapping("affectDepartement/{idUniversites}/{iddepartement}")
+    public void affecterProjectToTache(@PathVariable("idUniversites") Long idUniversites,@PathVariable("iddepartement") Long iddepartement) {
+        us.aassignUniversitetoDepartement(idUniversites,iddepartement);
+    }
 }
+

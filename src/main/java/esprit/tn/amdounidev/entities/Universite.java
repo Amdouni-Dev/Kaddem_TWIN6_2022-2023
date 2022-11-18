@@ -3,6 +3,7 @@ package esprit.tn.amdounidev.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
@@ -11,8 +12,7 @@ import java.util.Set;
 @Builder // bech nasna3 ay type de constructeur
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-public class Universite {
+public class Universite implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,13 @@ public class Universite {
     private Long idUniversite;
     @Column(name="nomUniversite")
     private String nomUniversite;
-
+    @Column(name="etatUniversite")
+    private String etatUniversite;
+    @Column(name="surfaceUniversite")
+    private int surfaceUniversite;
+    @Column(name="reputationUniversite")
+    private String reputationUniversite;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Departement> departments;
+
 }
