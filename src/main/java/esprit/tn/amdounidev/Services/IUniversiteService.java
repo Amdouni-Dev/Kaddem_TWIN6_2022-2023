@@ -25,13 +25,13 @@ public interface IUniversiteService {
 
     Universite findBynomUniversite(String Nom);
 
-    public void assignUniversitetoDepartement(Integer idUniversite,Integer idDepartement);
+    public void assignUniversitetoDepartement(Long idUniversite,Long idDepartement);
 
-    public void desaffectUniversitetoDepartement(Integer idUniversite, Integer idDepartement);
+    public void desaffectUniversitetoDepartement(Long idUniversite, Long idDepartement);
 
-    public void aassignUniversitetoDepartement(Integer idUniversite, Integer idDepartement);
+    public void aassignUniversitetoDepartement(Long idUniversite, Long idDepartement);
 
-    public void assignUniversitetolistDepartement(Integer idUniversite, List<Integer> ListidDepartement);
+    public void assignUniversitetolistDepartement(Long idUniversite, List<Long> ListidDepartement);
 
 
 

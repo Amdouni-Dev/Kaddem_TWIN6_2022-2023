@@ -91,7 +91,7 @@ public class UniversiteService implements IUniversiteService {
 
     //relation one to many bidirectionelle
     @Override
-    public void assignUniversitetoDepartement(Integer idUniversite, Integer idDepartement) {
+    public void assignUniversitetoDepartement(Long idUniversite, Long idDepartement) {
         log.info("Affecter a une Universite un Departement par son ID");
         Universite u= UR.findById((long)idUniversite).get(); //Parent
         Departement d=DR.findById((long)idDepartement).get(); //child
@@ -100,7 +100,7 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public void desaffectUniversitetoDepartement(Integer idUniversite, Integer idDepartement) {
+    public void desaffectUniversitetoDepartement(Long idUniversite, Long idDepartement) {
         log.info("desAffecter a une Universite un Departement");
         Universite u= UR.findById((long)idUniversite).get(); //Parent
         Departement d=DR.findById((long)idDepartement).get(); //child
@@ -110,7 +110,7 @@ public class UniversiteService implements IUniversiteService {
 
     //relation one to many unidirectionelle
     @Override
-    public void aassignUniversitetoDepartement(Integer idUniversite, Integer idDepartement) {
+    public void aassignUniversitetoDepartement(Long idUniversite, Long idDepartement) {
         log.info("Affecter a une Universite un Departement relation one to many unidirectionelle");
         Universite u= UR.findById((long)idUniversite).get(); //Parent
         Departement d=DR.findById((long)idDepartement).get(); //child
@@ -120,10 +120,10 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public void assignUniversitetolistDepartement(Integer idUniversite, List<Integer> ListidDepartement) {
+    public void assignUniversitetolistDepartement(Long idUniversite, List<Long> ListidDepartement) {
         log.info("Affecter a une Universite une liste des Departements ");
         Universite u= UR.findById((long)idUniversite).get(); //Parent
-        for (Integer i: ListidDepartement )
+        for (long i: ListidDepartement )
         {
             Departement d=DR.findById((long)i).get();
             u.getDepartments().add(d);

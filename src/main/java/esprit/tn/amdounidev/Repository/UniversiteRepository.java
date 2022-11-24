@@ -3,10 +3,12 @@ package esprit.tn.amdounidev.Repository;
 import esprit.tn.amdounidev.entities.Universite;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public interface UniversiteRepository extends JpaRepository<Universite,Long> {
 
     //Jpql Base sur les nom des attribus dans l'entite  et non pas dasn la base
