@@ -48,7 +48,7 @@ public class ReclamationController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
-    @PostMapping("addRec")
+    @PostMapping("addListRec")
     public List<Reclamation> addReclamations(@RequestBody List<Reclamation> listReclamations){
         return reclamationService.saveReclamations(listReclamations);
     }
@@ -83,7 +83,7 @@ public class ReclamationController {
 
 
     /********************************Delete Reclamation By Id************************************/
-    @Operation(summary = "Add Contrat", description = "Supprimer une reclamation ")
+    @Operation(summary = "Delete Reclamation", description = "Supprimer une reclamation ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Deleted successfully",content = {
                     @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),

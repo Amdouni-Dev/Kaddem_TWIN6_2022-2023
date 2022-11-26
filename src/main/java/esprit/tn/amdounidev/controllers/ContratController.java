@@ -134,7 +134,7 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
-    @PostMapping("")
+    @PostMapping("AssignEEqC")
     public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idCtrt") Integer idC,
                                                         @PathVariable("idEquipe") Integer idE) {
         contratService.addAndAssignEtudiantToEquipeAndContract(etudiant,idC,idE);
@@ -149,7 +149,7 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
-    @PostMapping("")
+    @PostMapping("AffectCToEtud/{nom}/{prenom}")
     public void affectContratToEtudiant(@RequestBody Contrat contrat, @RequestParam("nom") String nom,
                                                         @PathVariable("prenom") String prenom) {
         contratService.affectContratToEtudiant(contrat,nom,prenom);

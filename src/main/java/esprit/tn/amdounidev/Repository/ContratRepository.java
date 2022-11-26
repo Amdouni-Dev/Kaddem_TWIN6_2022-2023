@@ -19,7 +19,7 @@ public interface ContratRepository extends JpaRepository<Contrat, Long> {
     @Query("select e from Etudiant e where e.nom=?1 and e.prenom=?1")
     Etudiant EtudiantByNomAndPrenom(String nom, String prenom);
 
-    List<Contrat> findByMontantCAndSpecailiteAndEtudiantNomAndEtudiantDepartement_NomDepartementAndEtudiantDepartement();
+    //List<Contrat> findByMontantCAndSpecailiteAndEtudiantNomAndEtudiantDepartement_NomDepartementAndEtudiantDepartement();
 
     //    List<Universite> findByNomUniversiteAndDepartments();
 
