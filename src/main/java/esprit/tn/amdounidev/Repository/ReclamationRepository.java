@@ -11,3 +11,4 @@ public interface ReclamationRepository extends JpaRepository<Reclamation, Long> 
     @Query("select r from Reclamation r where r.etat=?1")
     List<Reclamation> findReclamationByEtat();
 }
+

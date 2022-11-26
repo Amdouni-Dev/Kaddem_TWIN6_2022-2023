@@ -37,7 +37,7 @@ public class ReclamationService implements IReclamationService{
             reclamation.setMessage(reclamation.getMessage());
             reclamation.setTitle(reclamation.getTitle());
             reclamation.setImage(reclamation.getImage());
-            reclamation.setProcessed(false);
+            reclamation.setEtat(reclamation.getEtat());
             reclamationRepository.save(reclamation);
         }
         return reclamation;
