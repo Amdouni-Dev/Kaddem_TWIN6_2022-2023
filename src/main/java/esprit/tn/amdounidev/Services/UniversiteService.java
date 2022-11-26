@@ -89,7 +89,7 @@ public class UniversiteService implements IUniversiteService {
     }
 
 
-    //relation one to many bidirectionelle
+    //relation one to many bidire ctionelle
     @Override
     public void assignUniversitetoDepartement(Long idUniversite, Long idDepartement) {
         log.info("Affecter a une Universite un Departement par son ID");
