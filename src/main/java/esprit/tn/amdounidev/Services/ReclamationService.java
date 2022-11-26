@@ -2,6 +2,7 @@ package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.Repository.ReclamationRepository;
 import esprit.tn.amdounidev.entities.Reclamation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
 public class ReclamationService implements IReclamationService{
 
     @Autowired
@@ -18,6 +20,11 @@ public class ReclamationService implements IReclamationService{
     @Override
     public Reclamation saveReclamation(Reclamation reclamation) {
         return reclamationRepository.save(reclamation);
+    }
+
+    @Override
+    public List<Reclamation> saveReclamations(List<Reclamation> listReclamations) {
+        return reclamationRepository.saveAll(listReclamations);
     }
 
     @Override
@@ -34,6 +41,11 @@ public class ReclamationService implements IReclamationService{
             reclamationRepository.save(reclamation);
         }
         return reclamation;
+    }
+
+    @Override
+    public List<Reclamation> updateReclamations(List<Reclamation> listReclamations) {
+        return reclamationRepository.saveAll(listReclamations);
     }
 
     @Override

@@ -30,7 +30,7 @@ public class ReclamationController {
     @Operation(summary = "Add Reclamation", description = "Ajouter une nouvelle reclamation ")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "add successfully",content = {
-                    @Content(mediaType = "application/json",schema = @Schema(implementation = Tache.class)) }),
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
@@ -40,11 +40,25 @@ public class ReclamationController {
     }
 
 
+    /********************************Add Reclamations************************************/
+    @Operation(summary = "Add Reclamation", description = "Ajouter une liste de reclamations ")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "add successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
+            @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
+    })
+    @PostMapping("addRec")
+    public List<Reclamation> addReclamations(@RequestBody List<Reclamation> listReclamations){
+        return reclamationService.saveReclamations(listReclamations);
+    }
+
+
     /********************************Update Reclamation************************************/
     @Operation(summary = "Update Reclamation", description = "Mettre à jour une reclamation ")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "add successfully",content = {
-                    @Content(mediaType = "application/json",schema = @Schema(implementation = Tache.class)) }),
+            @ApiResponse(responseCode = "200", description = "Updated successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Update failed",content = @Content)
     })
@@ -57,8 +71,8 @@ public class ReclamationController {
     /********************************Delete Reclamation************************************/
     @Operation(summary = "Delete Reclamation", description = "Supprimer une reclamation ")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "add successfully",content = {
-                    @Content(mediaType = "application/json",schema = @Schema(implementation = Tache.class)) }),
+            @ApiResponse(responseCode = "200", description = "Deleted successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Delete failed",content = @Content)
     })
@@ -71,8 +85,8 @@ public class ReclamationController {
     /********************************Delete Reclamation By Id************************************/
     @Operation(summary = "Add Contrat", description = "Supprimer une reclamation ")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "add successfully",content = {
-                    @Content(mediaType = "application/json",schema = @Schema(implementation = Tache.class)) }),
+            @ApiResponse(responseCode = "200", description = "Deleted successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Delete failed",content = @Content)
     })
@@ -85,9 +99,10 @@ public class ReclamationController {
     /********************************Get Reclamations************************************/
     @Operation(summary = "Get All Reclamations", description = "Retourne la liste des Reclamations ")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the Universite",content = { @Content(mediaType = "application/json",schema = @Schema(implementation = Universite.class)) }),
+            @ApiResponse(responseCode = "200", description = "Found the Universite",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Reclamation.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
-            @ApiResponse(responseCode = "404", description = "Empty List    ",content = @Content)
+            @ApiResponse(responseCode = "404", description = "Empty List ",content = @Content)
     })
     @GetMapping("listeReclamations")
     public List<Reclamation> listeReclamations(){

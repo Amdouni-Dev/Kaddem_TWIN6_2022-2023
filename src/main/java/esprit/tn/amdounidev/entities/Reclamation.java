@@ -28,7 +28,8 @@ public class Reclamation {
     @Column(name = "imageRec")
     private String image;
     @Column(name = "traiteRec")
-    private boolean processed;
+    @Enumerated(EnumType.STRING)
+    private EtatReclamation etat;
 
     @ManyToOne
     Etudiant etudiant;

@@ -138,4 +138,20 @@ public class ContratController {
     public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idCtrt") Integer idC,
                                                         @PathVariable("idEquipe") Integer idE) {
         contratService.addAndAssignEtudiantToEquipeAndContract(etudiant,idC,idE);
-    }}
+    }
+
+
+    /*******************************Affect Contrat To Etudiant***********************************/
+    @Operation(summary = "Affect Contrat To Etudiant", description = "Affecter un contrat a un etudiant")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Added successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Contrat.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
+            @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
+    })
+    @PostMapping("")
+    public void affectContratToEtudiant(@RequestBody Contrat contrat, @RequestParam("nom") String nom,
+                                                        @PathVariable("prenom") String prenom) {
+        contratService.affectContratToEtudiant(contrat,nom,prenom);
+    }
+}
