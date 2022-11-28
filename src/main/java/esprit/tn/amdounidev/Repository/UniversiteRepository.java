@@ -15,6 +15,8 @@ public interface UniversiteRepository extends JpaRepository<Universite,Long> {
     @Query(value = "select * from Universite where nomUniversite = ?1",nativeQuery = true)
     Universite findBynomUniversite(String nomUniversite);
 
+    List<Universite> findByetatUniversite(String etatUniversite);
+
 
 /*
     List<Universite> getBydateFinC(Date dateFinC);
