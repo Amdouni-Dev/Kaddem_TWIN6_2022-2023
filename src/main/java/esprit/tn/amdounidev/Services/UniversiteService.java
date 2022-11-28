@@ -66,7 +66,6 @@ public class UniversiteService implements IUniversiteService {
     @Override
     public void deleteUniversite(Universite d) {
         log.info("suppression d'Une Universite specifique");
-
         UR.delete(d);
     }
 
