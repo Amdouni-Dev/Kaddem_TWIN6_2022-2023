@@ -14,7 +14,6 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Thread implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +21,10 @@ public class Thread implements Serializable {
     private long id;
 
     @Column(name = "question")
-    private String salle;
+    private String question;
+
+    @Column(name = "object")
+    private String object;
 
     @Column(name = "nb_likes")
     private int nb_likes;
@@ -34,17 +36,19 @@ public class Thread implements Serializable {
     private boolean display;
 
     @Column(name = "verified")
-    private String verified;
+    private boolean verified;
+
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
+
+
+
 
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "thread")
     private Set<Reponse> reponses;
 
-    @JsonIgnore
-    @ManyToOne
-    private ThreadType threadType;
 
-    @JsonIgnore
     @ManyToOne
     private Etudiant etudiant;
 

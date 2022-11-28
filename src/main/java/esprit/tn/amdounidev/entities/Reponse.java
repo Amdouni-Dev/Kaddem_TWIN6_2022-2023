@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
 public class Reponse implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,10 +27,13 @@ public class Reponse implements Serializable {
 
     @Column(name = "display")
     private boolean display;
+
     @ManyToOne
     private Thread thread;
 
-    @JsonIgnore
+    @Column(name = "updatedAt")
+    private LocalDateTime updatedAt;
+
     @ManyToOne
     private Etudiant etudiant;
 }

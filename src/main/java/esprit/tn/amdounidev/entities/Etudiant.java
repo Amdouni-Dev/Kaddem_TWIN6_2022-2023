@@ -1,6 +1,7 @@
 package esprit.tn.amdounidev.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
@@ -33,6 +34,7 @@ public class Etudiant implements Serializable {
     private Departement departement;
     @ManyToMany(cascade = CascadeType.ALL,mappedBy ="etudiants" )
     private Set<Equipe> equipes;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
     private Set<Thread> threads;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")

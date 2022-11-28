@@ -22,8 +22,8 @@ public class schedulars {
         }
     }
 
-    @Scheduled(cron = "0 0 13 * * *")
+   /* @Scheduled(cron = "0 0 13 * * *")
     public void select(){
         System.out.println(contratService.retrieveAndUpdateStatusContrat());
-    }
+    }*/
 }
