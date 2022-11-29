@@ -23,7 +23,10 @@ public interface IUniversiteService {
 
     Universite findUniversiteById(Long id);
 
-    Universite findBynomUniversite(String Nom);
+    List<Universite> RecupbynomUniversite(String Nom);
+
+
+    List<Universite> RecupereBysurface_universite(int RecupereBysurface_universite);
 
     public void assignUniversitetoDepartement(Long idUniversite,Long idDepartement);
 

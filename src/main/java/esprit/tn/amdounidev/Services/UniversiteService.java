@@ -76,9 +76,15 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public Universite findBynomUniversite(String Nom) {
+    public List<Universite> RecupbynomUniversite(String Nom) {
         log.info("récuperation d'un Universites par Nom");
-        return UR.findBynomUniversite(Nom);
+        return UR.RecupbynomUniversite(Nom);
+    }
+
+    @Override
+    public List<Universite> RecupereBysurface_universite(int surface_universite) {
+        log.info("récuperation d'un Universites par surface_universite");
+        return UR.RecupereBysurface_universite(surface_universite);
     }
 
     @Override

@@ -136,8 +136,13 @@ public class UniversiteController {
     })
 
     @GetMapping("findUniversiteByNom")
-    public Universite findUniversiteById( @RequestParam String Nom) {
-        return us.findBynomUniversite(Nom);
+    public List<Universite> findUniversiteByNom( @RequestParam String Nom) {
+        return us.RecupbynomUniversite(Nom);
+    }
+
+    @GetMapping("findUniversiteBysurfaceUniversite")
+    public List<Universite> findUniversiteBysurfaceUniversite( @RequestParam int surfaceUniversite) {
+        return us.RecupereBysurface_universite(surfaceUniversite);
     }
 
     @PostMapping("affectDepartement/{idUniversites}/{iddepartement}")

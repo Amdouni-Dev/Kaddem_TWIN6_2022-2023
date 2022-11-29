@@ -12,18 +12,16 @@ import java.util.List;
 public interface UniversiteRepository extends JpaRepository<Universite,Long> {
 
     //Jpql Base sur les nom des attribus dans l'entite  et non pas dasn la base
-    @Query(value = "select * from Universite where nomUniversite = ?1",nativeQuery = true)
-    Universite findBynomUniversite(String nomUniversite);
+    @Query("select u from Universite u where u.surfaceUniversite <= ?1")
+    List<Universite> RecupereBysurface_universite(int surface_universite);
 
+    //SQL Native
+    @Query(value = "select * from Universite where nom_universite = ?1",nativeQuery = true)
+    List<Universite> RecupbynomUniversite(String nomUniversite);
+
+//Spring Data JPA - Keywords
     List<Universite> findByetatUniversite(String etatUniversite);
 
 
-/*
-    List<Universite> getBydateFinC(Date dateFinC);
-    //select * from Contrat where nom=? and prenom
-//zdvccccccccccc
-    List<Universite> findByspecialite(String specialite);
-    List<Universite> findByMontantCBetween(float min,float Max);
- */
 
 }
