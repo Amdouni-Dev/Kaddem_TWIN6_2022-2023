@@ -2070,3 +2070,6 @@ java.lang.NullPointerException: null
 
 2022-11-29 11:13:05.239  INFO 3852 --- [http-nio-8083-exec-6] e.t.a.Services.UniversiteService         : modification d'Une Universite
 2022-11-29 11:14:44.037  INFO 3852 --- [http-nio-8083-exec-8] e.t.a.Services.UniversiteService         : récuperation d'un Universites par surface_universite
+2022-11-29 11:19:12.238  INFO 3852 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-11-29 11:19:12.241  INFO 3852 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-11-29 11:19:12.255  INFO 3852 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
