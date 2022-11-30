@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("Departement")
 @Tag(name ="Departement" ,description = "Gestion de Departement ")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DepartementController {
 
     @Autowired
