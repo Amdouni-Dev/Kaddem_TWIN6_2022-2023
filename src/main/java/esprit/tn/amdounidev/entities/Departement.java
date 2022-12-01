@@ -1,5 +1,6 @@
 package esprit.tn.amdounidev.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -21,5 +22,6 @@ public class Departement {
     private String nomDepartement;
 
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "departement")
+    @JsonIgnore
     private Set<Etudiant> etudiants;
 }

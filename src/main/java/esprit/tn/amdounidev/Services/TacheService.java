@@ -1,11 +1,9 @@
 package esprit.tn.amdounidev.Services;
 
+import esprit.tn.amdounidev.Repository.EtudiantRepository;
 import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Repository.TacheRepository;
-import esprit.tn.amdounidev.entities.Departement;
-import esprit.tn.amdounidev.entities.Projet;
-import esprit.tn.amdounidev.entities.Tache;
-import esprit.tn.amdounidev.entities.Universite;
+import esprit.tn.amdounidev.entities.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +18,8 @@ public class TacheService implements  ITacheService {
 
     @Autowired //ou @Inject
     ProjetRepository pr;
+
+
 
     @Override
     public Tache addTache(Tache t) {
@@ -102,6 +102,20 @@ public class TacheService implements  ITacheService {
     public Projet getProjetByTache(Long idTache) {
         Tache t=ts.findByIdTache(idTache);
         return t.getProjet();
+    }
+
+
+    @Override
+    public List<Tache> getTachesByProjet(Long idProjet) {
+
+
+
+        return  ts.findByTachesByProjet(idProjet);
+    }
+
+    @Override
+    public Etudiant getEtudiantByTache(Long idEtudiant) {
+        return ts.findEtudiantByTache(idEtudiant);
     }
 
 
