@@ -7,6 +7,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,5 +40,13 @@ public class Etudiant implements Serializable {
     private Set<Thread> threads;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")
     private Set<Reclamation> reclamations;
+
+
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant",fetch = FetchType.EAGER)
+    // @OneToMany(mappedBy = "projet",fetch = FetchType.EAGER)
+    private List<Tache> taches;
+
+
 
 }

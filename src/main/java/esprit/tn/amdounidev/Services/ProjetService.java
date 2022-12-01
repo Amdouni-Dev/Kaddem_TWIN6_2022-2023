@@ -34,10 +34,23 @@ public class ProjetService implements IProjetService {
     }
 
     @Override
-    public Projet updateProjet(Projet p) {
+    public Projet updateProjet(Projet p , Long id) {
+
+        Projet p2=pr.findByIdProjet(id);
+
+            p2.setNomProjet(p.getNomProjet());
+           p2.setDureeProjet(p.getDureeProjet());
+           p2.setDateDebutP(p.getDateDebutP());
+           p2.setDateFinP(p.getDateFinP());
+
+          p2.setTypeProjet(p.getTypeProjet());
+
+
+
+
 
         log.info("modification d'un projet");
-        return pr.save(p);
+        return pr.save(p2);
     }
 
     @Override
@@ -90,6 +103,27 @@ public class ProjetService implements IProjetService {
 
         return  pr.findByTachesByProjets(idProjet);
     }
+
+    @Override
+    public int findByTypePIDEVProjet() {
+        return pr.findByTypePIDEVProjet();
+    }
+
+
+    @Override
+    public int findByTypePFEProjet() {
+        return pr.findByTypePFEProjet();
+    }
+
+
+
+    @Override
+    public int findByTypeJEUVIDEOProjet() {
+        return pr.findByTypeJEUVIDEOProjet();
+    }
+
+
+
 
 
 }
