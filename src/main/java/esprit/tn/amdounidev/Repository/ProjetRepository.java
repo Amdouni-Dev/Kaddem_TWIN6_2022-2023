@@ -20,7 +20,10 @@ public interface ProjetRepository extends JpaRepository<Projet,Long> {
 
     @Query("SELECT t FROM Tache t,Projet  p WHERE t.projet.idProjet=p.idProjet and p.idProjet = ?1")
     public List<Tache> findByTachesByProjets(Long id);
-
+    @Transactional
+    @Modifying
+    @Query("delete  FROM Projet p  WHERE p.idProjet =22")
+    public void deleteAutomatique();
 
 
     @Query("SELECT count(p) FROM Projet p  WHERE p.typeProjet = 'PIDEV'")
