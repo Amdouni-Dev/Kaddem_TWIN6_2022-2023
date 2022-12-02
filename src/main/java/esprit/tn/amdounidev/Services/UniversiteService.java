@@ -42,6 +42,7 @@ public class UniversiteService implements IUniversiteService {
     @Override
     public Universite updateUniversite(Universite universite, long id) {
         log.info("modification d'Une Universite");
+            universite.setIdUniversite(id);
             universite.setDate_update(LocalDateTime.now());
             return UR.save(universite);
         }
