@@ -26,4 +26,6 @@ public interface IProjetService {
     public int findByTypePIDEVProjet();
     public int findByTypePFEProjet();
     public int findByTypeJEUVIDEOProjet();
+
+    public Projet findProjectByName(String nom);
 }

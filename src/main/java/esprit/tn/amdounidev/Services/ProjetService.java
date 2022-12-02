@@ -122,8 +122,11 @@ public class ProjetService implements IProjetService {
         return pr.findByTypeJEUVIDEOProjet();
     }
 
+    @Override
+    public Projet findProjectByName(String nom){
 
-
+      return pr.findProjectByName(nom);
+    }
 
 
 }

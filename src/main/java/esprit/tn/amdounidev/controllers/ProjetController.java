@@ -157,6 +157,11 @@ else
 
 
 
+    @GetMapping("findProjectByName/{nom}")
+    public Projet findProjectByName(@PathVariable("nom") String nom) {
+        return ps.findProjectByName(nom);
+    }
+
     @PostMapping("affectTache/{idProjet}/{idTache}")
     public void affecterTacheToProjet(@PathVariable("idProjet") Long idProjet,@PathVariable("idTache") Long idTache) {
 
