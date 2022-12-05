@@ -54,9 +54,9 @@ public class DepartementController {
             @ApiResponse(responseCode = "404", description = "Modifier failed",content = @Content)
     })
 
-    @PutMapping("updateDepartment")
-    public Departement updateDepartment(@RequestBody Departement d) {
-        return ds.updateDepartment(d);
+    @PutMapping("updateDepartment/{id}")
+    public Departement updateDepartment(@RequestBody Departement d,@PathVariable long id) {
+        return ds.updateDepartment(d,id);
     }
 
     @Operation(summary = "Update list Universite", description = "Modifier une liste des Universites ")

@@ -9,7 +9,7 @@ public interface IDepartementService {
     Departement addDepartment(Departement d);
     List<Departement> addDepartment (List<Departement> listDepartment);
 
-    Departement updateDepartment (Departement d);
+    Departement updateDepartment (Departement d,long id);
     List<Departement> updateDepartments (List<Departement> listDepartment);
 
     void deleteDepartment(Long id);

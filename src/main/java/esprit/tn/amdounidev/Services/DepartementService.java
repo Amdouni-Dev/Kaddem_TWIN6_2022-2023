@@ -36,7 +36,8 @@ public class DepartementService implements  IDepartementService{
     }
 
     @Override
-    public Departement updateDepartment(Departement departement) {
+    public Departement updateDepartment(Departement departement, long id) {
+        departement.setIdDepartement(id);
         log.info("modification d'Une departement");
         return dr.save(departement);
     }
