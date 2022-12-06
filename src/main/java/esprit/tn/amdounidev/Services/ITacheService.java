@@ -1,5 +1,7 @@
 package esprit.tn.amdounidev.Services;
 
+import esprit.tn.amdounidev.entities.Etudiant;
+import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
 
 import java.util.List;
@@ -16,4 +18,12 @@ public interface ITacheService {
 
     List<Tache> findAllTache();
     Tache findTacheById (Long id);
+
+    public void aassignProjetToTache(Long idProjet, Long idTache);
+    public void assignProjetToListTache(Long idProjet, List<Long> ListIdTaches);
+
+    public Projet getProjetByTache(Long idTache);
+    public List<Tache> getTachesByProjet(Long idProjet) ;
+
+    public Etudiant getEtudiantByTache(Long idEtudiant) ;
 }

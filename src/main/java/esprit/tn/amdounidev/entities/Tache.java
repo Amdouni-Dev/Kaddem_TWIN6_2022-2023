@@ -27,4 +27,9 @@ public class Tache implements Serializable {
     @JsonIgnore
     private Projet projet;
 
+    @ManyToOne
+    @JoinColumn( name="idEtudiant" )
+    @JsonIgnore
+    private Etudiant etudiant;
+
 }

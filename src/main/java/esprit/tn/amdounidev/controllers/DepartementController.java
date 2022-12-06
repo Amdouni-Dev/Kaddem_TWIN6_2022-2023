@@ -17,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("Departement")
 @Tag(name ="Departement" ,description = "Gestion de Departement ")
+@CrossOrigin(origins = "http://localhost:4200")
 public class DepartementController {
 
     @Autowired
@@ -53,9 +54,9 @@ public class DepartementController {
             @ApiResponse(responseCode = "404", description = "Modifier failed",content = @Content)
     })
 
-    @PutMapping("updateDepartment")
-    public Departement updateDepartment(@RequestBody Departement d) {
-        return ds.addDepartment(d);
+    @PutMapping("updateDepartment/{id}")
+    public Departement updateDepartment(@RequestBody Departement d,@PathVariable long id) {
+        return ds.updateDepartment(d,id);
     }
 
     @Operation(summary = "Update list Universite", description = "Modifier une liste des Universites ")
@@ -67,7 +68,7 @@ public class DepartementController {
 
     @PutMapping("updateDepartments")
     public List<Departement> updateDepartment(@RequestBody List<Departement> listDepartment) {
-        return ds.addDepartment(listDepartment);
+        return ds.updateDepartments(listDepartment);
     }
 
     @Operation(summary = "Delete a Departement By ID", description = "Supprimer une Departement par sont id")
@@ -117,4 +118,6 @@ public class DepartementController {
     public Departement findDepartmentById(@RequestParam Long id) {
         return ds.findDepartmentById(id);
     }
+
+
 }

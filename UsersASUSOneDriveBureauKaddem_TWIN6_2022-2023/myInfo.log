@@ -1,0 +1,50 @@
+2022-12-06 05:00:16.124  INFO 5324 --- [main] esprit.tn.amdounidev.KaddemApplication   : Starting KaddemApplication using Java 11.0.15 on DESKTOP-2PNGV2D with PID 5324 (C:\Users\aa\OneDrive\Documents\GitHub\Kaddem_TWIN6_2022-2023\target\classes started by aa in C:\Users\aa\OneDrive\Documents\GitHub\Kaddem_TWIN6_2022-2023)
+2022-12-06 05:00:16.130  INFO 5324 --- [main] esprit.tn.amdounidev.KaddemApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-12-06 05:00:16.701  INFO 5324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-06 05:00:16.778  INFO 5324 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 11 JPA repository interfaces.
+2022-12-06 05:00:17.264  INFO 5324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2022-12-06 05:00:17.270  INFO 5324 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-06 05:00:17.270  INFO 5324 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-06 05:00:17.359  INFO 5324 --- [main] o.a.c.c.C.[.[localhost].[/kaddem]        : Initializing Spring embedded WebApplicationContext
+2022-12-06 05:00:17.359  INFO 5324 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1192 ms
+2022-12-06 05:00:17.485  INFO 5324 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-06 05:00:17.513  INFO 5324 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-06 05:00:17.628  INFO 5324 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-06 05:00:17.685  INFO 5324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-06 05:00:17.826  INFO 5324 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-06 05:00:17.832  INFO 5324 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-12-06 05:00:18.619  INFO 5324 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-06 05:00:18.624  INFO 5324 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-06 05:00:19.606  WARN 5324 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-06 05:00:20.465  INFO 5324 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path '/kaddem'
+2022-12-06 05:00:20.497  INFO 5324 --- [main] esprit.tn.amdounidev.KaddemApplication   : Started KaddemApplication in 4.685 seconds (JVM running for 5.557)
+2022-12-06 05:00:37.170  INFO 5324 --- [http-nio-8083-exec-1] o.a.c.c.C.[.[localhost].[/kaddem]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-06 05:00:37.172  INFO 5324 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-06 05:00:37.173  INFO 5324 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-06 05:28:21.787  INFO 5324 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-12-06 05:28:21.790  INFO 5324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-12-06 05:28:21.798  INFO 5324 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-12-06 05:28:26.381  INFO 19652 --- [main] esprit.tn.amdounidev.KaddemApplication   : Starting KaddemApplication using Java 11.0.15 on DESKTOP-2PNGV2D with PID 19652 (C:\Users\aa\OneDrive\Documents\GitHub\Kaddem_TWIN6_2022-2023\target\classes started by aa in C:\Users\aa\OneDrive\Documents\GitHub\Kaddem_TWIN6_2022-2023)
+2022-12-06 05:28:26.383  INFO 19652 --- [main] esprit.tn.amdounidev.KaddemApplication   : No active profile set, falling back to 1 default profile: "default"
+2022-12-06 05:28:26.993  INFO 19652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-12-06 05:28:27.054  INFO 19652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 56 ms. Found 11 JPA repository interfaces.
+2022-12-06 05:28:27.527  INFO 19652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8083 (http)
+2022-12-06 05:28:27.534  INFO 19652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-06 05:28:27.534  INFO 19652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-12-06 05:28:27.613  INFO 19652 --- [main] o.a.c.c.C.[.[localhost].[/kaddem]        : Initializing Spring embedded WebApplicationContext
+2022-12-06 05:28:27.613  INFO 19652 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1186 ms
+2022-12-06 05:28:27.758  INFO 19652 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-12-06 05:28:27.806  INFO 19652 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-12-06 05:28:27.921  INFO 19652 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-12-06 05:28:27.999  INFO 19652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-06 05:28:28.094  INFO 19652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-06 05:28:28.105  INFO 19652 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-12-06 05:28:28.907  INFO 19652 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-12-06 05:28:28.913  INFO 19652 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-12-06 05:28:29.931  WARN 19652 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-12-06 05:28:30.653  INFO 19652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8083 (http) with context path '/kaddem'
+2022-12-06 05:28:30.664  INFO 19652 --- [main] esprit.tn.amdounidev.KaddemApplication   : Started KaddemApplication in 4.637 seconds (JVM running for 5.397)
+2022-12-06 05:28:47.166  INFO 19652 --- [http-nio-8083-exec-1] o.a.c.c.C.[.[localhost].[/kaddem]        : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-06 05:28:47.167  INFO 19652 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-06 05:28:47.168  INFO 19652 --- [http-nio-8083-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-12-06 07:17:05.905  WARN 19652 --- [http-nio-8083-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; nested exception is java.lang.NumberFormatException: For input string: "swagger-ui"]
