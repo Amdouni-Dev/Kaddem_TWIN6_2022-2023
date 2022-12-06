@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -27,6 +28,8 @@ public class UniversiteService implements IUniversiteService {
         log.info("universite ajouté :\n" +
                 "Nom d\'universite "+universite.getNomUniversite() +" " +
                 "ID d\'universite " +universite.getIdUniversite()+"" );
+
+        universite.setDate_creation(LocalDateTime.now());
         return UR.save(universite);
     }
 
@@ -39,17 +42,10 @@ public class UniversiteService implements IUniversiteService {
     @Override
     public Universite updateUniversite(Universite universite, long id) {
         log.info("modification d'Une Universite");
-        Optional<Universite> updateUniversite = UR.findById(id);
-        if (updateUniversite.isPresent()) {
-            long i = universite.getIdUniversite();
-            System.out.println("sasa"+i);
-
             universite.setIdUniversite(id);
-            universite.setNomUniversite(universite.getNomUniversite());
+            universite.setDate_update(LocalDateTime.now());
             return UR.save(universite);
         }
-        return null;
-    }
 
     @Override
     public List<Universite> updateUniversite(List<Universite> listUniversite) {
@@ -66,7 +62,6 @@ public class UniversiteService implements IUniversiteService {
     @Override
     public void deleteUniversite(Universite d) {
         log.info("suppression d'Une Universite specifique");
-
         UR.delete(d);
     }
 
@@ -77,9 +72,15 @@ public class UniversiteService implements IUniversiteService {
     }
 
     @Override
-    public Universite findBynomUniversite(String Nom) {
+    public List<Universite> RecupbynomUniversite(String Nom) {
         log.info("récuperation d'un Universites par Nom");
-        return UR.findBynomUniversite(Nom);
+        return UR.RecupbynomUniversite(Nom);
+    }
+
+    @Override
+    public List<Universite> RecupereBysurface_universite(int surface_universite) {
+        log.info("récuperation d'un Universites par surface_universite");
+        return UR.RecupereBysurface_universite(surface_universite);
     }
 
     @Override

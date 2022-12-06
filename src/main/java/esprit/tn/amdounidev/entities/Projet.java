@@ -34,8 +34,8 @@ public class Projet implements Serializable {
     @Column(name="dateFinP")
     private Date dateFinP;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "projet",fetch = FetchType.EAGER)
+  // @OneToMany(mappedBy = "projet",fetch = FetchType.EAGER)
     private List<Tache> taches;
 
 }

@@ -10,7 +10,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 //@EnableAutoConfiguration
 //@ComponentScan
-@EnableScheduling
+//@EnableScheduling
 @SpringBootApplication
 public class KaddemApplication {
 
