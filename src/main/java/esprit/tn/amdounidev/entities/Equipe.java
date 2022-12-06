@@ -2,9 +2,12 @@ package esprit.tn.amdounidev.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,17 +30,23 @@ public class Equipe implements Serializable {
     private Boolean isDeleted;
     @Column(name = "isValid")
     private Boolean isValid;
+    @Column(name = "image")
+    private String image;
   //  @Column(name="nombreMaxParticipant")
     //private int nombreMaxParticipant;
 
-    @JsonIgnore
-    @OneToOne
+
+    @OneToOne(cascade = CascadeType.ALL)
     private DetailEquipe detailEquipe;
+
+    @ManyToMany
     @JsonIgnore
-    @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Etudiant> etudiants;
+    private List<Etudiant> etudiants;
+   @OneToOne
+    ImageEquipe imageEquipe;
+   @OneToOne
+   Etudiant etudiant;
 
 
-    public Equipe(Boolean isValid, Boolean isDeleted, String nomEquipe) {
-    }
+
 }

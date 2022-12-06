@@ -11,6 +11,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("Etudiant")
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EtudiantController {
     @Autowired
     esprit.tn.amdounidev.Services.EtudiantService EtudiantService;
@@ -42,5 +44,9 @@ public class EtudiantController {
     public Etudiant updateEtudiant(@RequestBody Etudiant Etudiant ){
 
         return EtudiantService.updateEtudiant(Etudiant);
+    }
+    @GetMapping("TestClass")
+    public List<Etudiant> findAllByFunction(@RequestParam String u, @RequestParam String d){
+        return repo.findAllBy(u,d);
     }
 }

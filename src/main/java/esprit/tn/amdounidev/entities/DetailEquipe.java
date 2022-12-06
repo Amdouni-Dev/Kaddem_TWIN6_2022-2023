@@ -35,6 +35,7 @@ public class DetailEquipe {
     private Integer nombreImages;
 
 
-    @OneToOne(mappedBy = "detailEquipe")
-    private Equipe equipe;
+
+
+
 }
