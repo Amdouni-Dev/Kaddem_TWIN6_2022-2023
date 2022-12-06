@@ -28,6 +28,9 @@ public class Reponse implements Serializable {
     @Column(name = "display")
     private boolean display;
 
+    @Column(name = "nb_likes")
+    private int nb_likes;
+
     @ManyToOne
     private Thread thread;
 

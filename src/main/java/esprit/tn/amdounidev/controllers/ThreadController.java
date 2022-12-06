@@ -43,6 +43,7 @@ public class ThreadController {
     @PostMapping("/AddThread")
     public ResponseEntity<Thread> AddThread(@RequestBody Thread Thread){
 
+        System.out.println(Thread);
         return new ResponseEntity<>(ThreadService.addThread(Thread), HttpStatus.CREATED);
 
     }
