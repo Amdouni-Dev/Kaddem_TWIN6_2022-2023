@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ReponseService {
 
+    List<Reponse> findByThread(long id);
+
     Reponse addReponse(Reponse d);
     List<Reponse> addReponses (List<Reponse> listReponse);
 
@@ -17,4 +19,5 @@ public interface ReponseService {
 
     List<Reponse> findAllReponse();
     Reponse findReponseById (Long id);
+
 }

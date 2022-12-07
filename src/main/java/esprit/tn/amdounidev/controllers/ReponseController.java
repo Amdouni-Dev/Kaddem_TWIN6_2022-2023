@@ -42,6 +42,11 @@ public class ReponseController {
         return ReponseService.findReponseById(id);
     }
 
+    @GetMapping("thread/{id}")
+    public ResponseEntity<List<Reponse>> findReponseByThread( @PathVariable Long id) {
+        return new ResponseEntity <List<Reponse>>(ReponseService.findByThread(id), HttpStatus.OK);
+    }
+
 
     @PostMapping("/AddReponse")
     public Reponse  AddReponse(@RequestBody Reponse Reponse){
