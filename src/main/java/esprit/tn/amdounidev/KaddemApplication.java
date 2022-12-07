@@ -31,7 +31,7 @@ import java.nio.file.Paths;
 @EnableBatchProcessing
 @SpringBootApplication
 public class KaddemApplication {
-   // private static String userDirectory = System.getProperty("user.dir");
+    // private static String userDirectory = System.getProperty("user.dir");
     public static void main(String[] args) {
         SpringApplication.run(KaddemApplication.class, args);
 //        int i=0;

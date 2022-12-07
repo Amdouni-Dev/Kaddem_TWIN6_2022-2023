@@ -16,8 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/Thread")
 public class ThreadController {
 
@@ -26,12 +27,12 @@ public class ThreadController {
     @Autowired
     ThreadServiceImpl ThreadService;
 
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "302", description = "Thread list "),
-            @ApiResponse(responseCode = "500", description = "erreur serveur")})
-    @Operation(summary = "Threads ",description = "Thread list")
+
     @GetMapping("/")
-    public ResponseEntity<List<Thread>> findThreadList(){
+    public ResponseEntity <List<Thread>> findThreadList(){
+
+//        return rr.findAll1();
+
         List<Thread> list=new ArrayList<>();
         for (Iterator<Thread> i = rr.findAll().iterator(); i.hasNext();) {
             Thread item = i.next();

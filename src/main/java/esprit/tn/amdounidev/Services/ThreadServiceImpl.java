@@ -36,7 +36,7 @@ public class ThreadServiceImpl implements ThreadService{
 
     @Override
     public List<Thread> addThread(List<Thread> listThread) {
-        return tr.saveAll(listThread);
+        return (List<Thread>) tr.saveAll(listThread);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ThreadServiceImpl implements ThreadService{
 
     @Override
     public List<Thread> updateThread(List<Thread> listThread) {
-        return tr.saveAll(listThread);
+        return (List<Thread>) tr.saveAll(listThread);
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ThreadServiceImpl implements ThreadService{
 
     @Override
     public List<Thread> findAllThread() {
-        return tr.findAll();
+        return (List<Thread>) tr.findAll();
     }
 
     @Override
