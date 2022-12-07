@@ -7,6 +7,7 @@ import net.bytebuddy.dynamic.loading.InjectionClassLoader;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -33,20 +34,23 @@ public class Etudiant implements Serializable {
     private Set<Contrat> contrats;
     @ManyToOne
     private Departement departement;
-    @ManyToMany(cascade = CascadeType.ALL,mappedBy ="etudiants" )
-    private Set<Equipe> equipes;
-    @JsonIgnore
+    @ManyToMany(mappedBy ="etudiants" )
+    private List<Equipe> equipes;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
     private Set<Thread> threads;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant")
-    private Set<Reclamation> reclamations;
 
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "etudiant",fetch = FetchType.EAGER)
-    // @OneToMany(mappedBy = "projet",fetch = FetchType.EAGER)
-    private List<Tache> taches;
-
-
+    // Mouna **************
+    @Enumerated(EnumType.STRING)
+    private RoleEtudiantEquipe roleEtudiantEquipe;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateEntreeEquipe;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateSortieEquipe;
+    @Column(name="isDeletedFromEquipe")
+    private Boolean isDeletedFromEquipe;
+    @OneToOne(mappedBy = "etudiant")
+    @JsonIgnore
+    Equipe equipe;
 
 }

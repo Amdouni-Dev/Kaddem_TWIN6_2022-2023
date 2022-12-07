@@ -3,7 +3,6 @@ package esprit.tn.amdounidev.controllers;
 import esprit.tn.amdounidev.Repository.EtudiantRepository;
 import esprit.tn.amdounidev.Services.EtudiantService;
 import esprit.tn.amdounidev.entities.Etudiant;
-import esprit.tn.amdounidev.entities.Tache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +11,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("Etudiant")
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class EtudiantController {
     @Autowired
     esprit.tn.amdounidev.Services.EtudiantService EtudiantService;
@@ -44,14 +45,8 @@ public class EtudiantController {
 
         return EtudiantService.updateEtudiant(Etudiant);
     }
-
-
-    @GetMapping("findEByDAndU")
-    public List<Etudiant> findEByDAndU() {
-
-        return EtudiantRepository.findE();
-
+    @GetMapping("TestClass")
+    public List<Etudiant> findAllByFunction(@RequestParam String u, @RequestParam String d){
+        return repo.findAllBy(u,d);
     }
-
-
 }
