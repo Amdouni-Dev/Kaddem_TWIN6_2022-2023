@@ -1,6 +1,5 @@
 package esprit.tn.amdounidev.Services;
 
-import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Reclamation;
 
 import java.util.List;

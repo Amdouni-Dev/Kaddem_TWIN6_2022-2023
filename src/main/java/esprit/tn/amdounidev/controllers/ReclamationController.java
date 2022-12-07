@@ -2,8 +2,6 @@ package esprit.tn.amdounidev.controllers;
 
 import esprit.tn.amdounidev.Services.ReclamationService;
 import esprit.tn.amdounidev.entities.Reclamation;
-import esprit.tn.amdounidev.entities.Tache;
-import esprit.tn.amdounidev.entities.Universite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

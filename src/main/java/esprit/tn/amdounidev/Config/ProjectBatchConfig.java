@@ -1,5 +1,11 @@
 package esprit.tn.amdounidev.Config;
 
+/*
+import esprit.tn.amdounidev.BatchProjet.ProjectProcessorProjet;
+import esprit.tn.amdounidev.BatchProjet.ProjectReaderProjet;
+import esprit.tn.amdounidev.BatchProjet.ProjectWriterProjet;
+import esprit.tn.amdounidev.entities.Projet;
+ */
 
 import esprit.tn.amdounidev.batchEquipe.ProjectProcessor;
 import esprit.tn.amdounidev.batchEquipe.ProjectReader;
@@ -85,4 +91,51 @@ public class ProjectBatchConfig {
 	public ItemWriter<Equipe> projectItemWriter() {
 		return new ProjectWriter();
 	}
+
+
+
+	//----------------------------------------------------------------------------------batch eya
+	/*
+
+	@Bean
+	public Step projectStep() {
+
+		try {
+			return stepBuilderFactory.get(STEP_NAME)
+					.<Projet, Projet>chunk(2).reader(projectItemReader().read())
+					.processor(projectItemProcessor()).writer(projectItemWriter())
+					.exceptionHandler((context, throwable) -> log.error("Skipping record on file. cause="+ throwable.getCause()))
+					.build();
+		} catch (Exception e) {
+			log.error("End Batch Step");
+			return stepBuilderFactory.get(STEP_NAME).chunk(2).build();
+		}
+
+	}
+
+
+
+
+
+
+	@Bean
+	public ProjectReaderProjet projectItemReader() {
+		return new ProjectReaderProjet();
+	}
+
+	@Bean
+	public ItemProcessor<Projet, Projet> projectItemProcessor() {
+		return new ProjectProcessorProjet();
+	}
+
+	@Bean
+	public ItemWriter<Projet> projectItemWriter() {
+		return new ProjectWriterProjet();
+	}
+	 */
+
+
+
+
+
 }

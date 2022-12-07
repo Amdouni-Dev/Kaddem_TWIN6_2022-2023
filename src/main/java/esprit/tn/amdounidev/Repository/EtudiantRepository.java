@@ -1,8 +1,6 @@
 package esprit.tn.amdounidev.Repository;
 
 import esprit.tn.amdounidev.entities.Etudiant;
-import esprit.tn.amdounidev.entities.Projet;
-import esprit.tn.amdounidev.entities.Tache;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
