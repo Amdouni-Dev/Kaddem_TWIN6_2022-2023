@@ -1,15 +1,22 @@
 package esprit.tn.amdounidev.Services;
 
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Repository.TacheRepository;
-import esprit.tn.amdounidev.entities.Departement;
+import esprit.tn.amdounidev.entities.Equipe;
 import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
-import esprit.tn.amdounidev.entities.Universite;
+import esprit.tn.amdounidev.entities.Type;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 @Slf4j
 @Service
@@ -19,6 +26,10 @@ public class ProjetService implements IProjetService {
     ProjetRepository pr;
     @Autowired
     TacheRepository tr;
+
+   public static final String ACCOUNT_SID = System.getenv("ACCOUNT_SID");
+    public static final String AUTH_TOKEN = System.getenv("AUTH_TOKEN");
+
     @Override
     public Projet addProjet(Projet p) {
 
@@ -75,9 +86,16 @@ public class ProjetService implements IProjetService {
     }
 
     @Override
-    public List<Projet> findAllProjet() {
+    public List<Projet> findAllProjet(int pageNo, int pageSize) {
         log.info("récuperation de tous les projets");
-        return pr.findAll();
+        Pageable paging = PageRequest.of(pageNo, pageSize);
+        Page<Projet> pagedResult = pr.findAll(paging);
+
+        return pagedResult.toList();
+
+
+
+
     }
 
     @Override
@@ -127,6 +145,45 @@ public class ProjetService implements IProjetService {
 
       return pr.findProjectByName(nom);
     }
+    @Override
+    public Projet getProjetPerime(){
+        Date date=new Date();
+
+     return pr.getProjetPerime(date)   ;
+    }
+    @Override
+    public int deleteAuto() {
+        Date date=new Date();
+        if(getProjetPerime()!=null) {
+            Projet p = getProjetPerime();
+            String nom = p.getNomProjet();
+            Type type = p.getTypeProjet();
+
+            if (pr.deleteAutomatique(date) != 0) {
 
 
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+                Message message = Message.creator(new PhoneNumber("+21695218588"),
+                        new PhoneNumber("+13853964540"),
+                        "Le projet " + nom + " de type " + type + " a été  supprimé ainsi que ses taches ").create();
+
+                System.out.println(message.getSid());
+                System.out.println("Un projet a ete supprime avec succes el sms twilio vous sera envoye");
+
+                return 1;
+
+            } else {
+                System.out.println("pas de projet à supprimer");
+                return -1;
+            }
+        }else
+            return -1;
+
+    }
+    @Override
+    public Projet retrieveProjet(Long id){
+
+        return pr.findById(id).get();
+    }
 }

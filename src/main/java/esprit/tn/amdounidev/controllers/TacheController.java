@@ -1,25 +1,26 @@
 package esprit.tn.amdounidev.controllers;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
 import esprit.tn.amdounidev.Repository.EtudiantRepository;
 import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Repository.TacheRepository;
+import esprit.tn.amdounidev.Services.FirebaseService;
 import esprit.tn.amdounidev.Services.ITacheService;
-import esprit.tn.amdounidev.entities.Departement;
-import esprit.tn.amdounidev.entities.Etudiant;
-import esprit.tn.amdounidev.entities.Projet;
-import esprit.tn.amdounidev.entities.Tache;
+import esprit.tn.amdounidev.entities.*;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.Null;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -29,6 +30,8 @@ import java.util.Optional;
 public class TacheController {
     @Autowired
     ITacheService ts;
+    @Autowired
+    FirebaseService fs;
     @Autowired //ou @Inject
     ProjetRepository pr;
 @Autowired
@@ -200,4 +203,14 @@ public class TacheController {
         return  ts.getProjetByTache(idTache);
 
     }
+
+    @PostMapping("sendNotif")
+    public String sendNotification(@RequestBody Notee note
+                                  ) throws FirebaseMessagingException {
+        return fs.sendNotification(note);
+    }
+
+
+
+
 }

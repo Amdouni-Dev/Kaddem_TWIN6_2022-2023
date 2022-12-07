@@ -1,7 +1,6 @@
 package esprit.tn.amdounidev.Repository;
 
 
-import esprit.tn.amdounidev.entities.Equipe;
 import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -26,8 +26,20 @@ public interface ProjetRepository extends JpaRepository<Projet,Long> {
     public List<Tache> findByTachesByProjets(Long id);
     @Transactional
     @Modifying
-    @Query("delete  FROM Projet p  WHERE p.idProjet =22")
-    public void deleteAutomatique();
+    @Query("delete  FROM Projet p  WHERE p.dateFinP = ?1")
+    public int deleteAutomatique(Date date);
+
+    @Query("SELECT p  FROM Projet p  WHERE p.dateFinP = ?1")
+    public Projet getProjetPerime(Date date);
+
+
+
+
+
+
+
+
+
 
 
     @Query("SELECT count(p) FROM Projet p  WHERE p.typeProjet = 'PIDEV'")

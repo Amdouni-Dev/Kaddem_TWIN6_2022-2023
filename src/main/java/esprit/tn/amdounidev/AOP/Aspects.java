@@ -1,4 +1,4 @@
-package esprit.tn.amdounidev.AOP;
+/*package esprit.tn.amdounidev.AOP;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -33,3 +33,4 @@ public class Aspects {
         return obj;
     }
 }
+*/
