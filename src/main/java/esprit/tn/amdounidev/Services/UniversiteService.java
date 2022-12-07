@@ -51,10 +51,11 @@ public class UniversiteService implements IUniversiteService {
             universite1.setEtatUniversite(universite.getEtatUniversite());
             universite1.setReputationUniversite(universite.getReputationUniversite());
             universite1.setSurfaceUniversite(universite.getSurfaceUniversite());
+        universite1.setDate_creation(LocalDateTime.now());
+        universite1.setDate_update(LocalDateTime.now());
 
 
-
-            UR.save(universite1);
+        UR.save(universite1);
         return universite;
         }
 
