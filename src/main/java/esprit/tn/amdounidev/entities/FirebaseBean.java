@@ -16,7 +16,7 @@ import java.util.Map;
 
 @Component
 public class FirebaseBean {
-
+/*
     @Bean
     FirebaseMessaging firebaseMessaging() throws IOException {
 
@@ -31,6 +31,6 @@ public class FirebaseBean {
         FirebaseApp app = FirebaseApp.initializeApp(firebaseOptions, "my-app");
         return FirebaseMessaging.getInstance(app);
     }
-
+*/
 }
 

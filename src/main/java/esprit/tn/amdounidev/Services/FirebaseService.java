@@ -17,7 +17,7 @@ import java.util.Map;
 @Service
 public class FirebaseService {
 
-    private final FirebaseMessaging firebaseMessaging;
+  /*  private final FirebaseMessaging firebaseMessaging;
 
     public FirebaseService(FirebaseMessaging firebaseMessaging) {
    this.firebaseMessaging = firebaseMessaging;
@@ -42,7 +42,7 @@ public class FirebaseService {
 
         return firebaseMessaging.send(message);
     }
-
+*/
 }
 
 
