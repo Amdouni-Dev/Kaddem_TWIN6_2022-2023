@@ -1,9 +1,11 @@
 package esprit.tn.amdounidev.controllers;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.lowagie.text.DocumentException;
 import esprit.tn.amdounidev.Repository.ProjetRepository;
 import esprit.tn.amdounidev.Services.IProjetService;
 import esprit.tn.amdounidev.Services.ITacheService;
+import esprit.tn.amdounidev.Services.PdfExport;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import esprit.tn.amdounidev.entities.Projet;
@@ -19,6 +21,11 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 @RestController
 @RequestMapping("Projet")
@@ -196,5 +203,24 @@ public class ProjetController {
     public int envoiSMS() {
         return ps.deleteAuto();
     }
+
+
+    @GetMapping("export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException {
+        response.setContentType("application/pdf");
+        DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss");
+        String currentDateTime = dateFormatter.format(new Date());
+
+        String headerKey = "Content-Disposition";
+        String headerValue = "attachment; filename=Projets_" + currentDateTime + ".pdf";
+        response.setHeader(headerKey, headerValue);
+
+        List<Projet> listProjets = ps.findAllProjet(0,20);
+
+       PdfExport exporter = new PdfExport(listProjets);
+        exporter.export(response);
+
+    }
+
 
 }
