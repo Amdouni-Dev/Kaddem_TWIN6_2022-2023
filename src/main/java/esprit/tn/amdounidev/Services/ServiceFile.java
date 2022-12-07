@@ -18,7 +18,7 @@ public class ServiceFile {
     private String rootPath =  "\\src\\main\\resources\\PhotosEquipe";
     private static final String userDirectory = System.getProperty("user.dir")+"\\src\\main\\resources\\static\\images\\";
 
-  /**  private String generateRandomName() {
+    private String generateRandomName() {
         String SALTCHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder salt = new StringBuilder();
         Random rnd = new Random();
@@ -28,15 +28,15 @@ public class ServiceFile {
         }
         String saltStr = salt.toString();
         return saltStr;
-    }*/
+    }
 
     public String saveFile(MultipartFile file, String subPath) throws IOException {
 //String folder="/Photos/";
 //byte[] bytes=file.getBytes();
 //Path path2= Paths.get(userDirectory+file.getOriginalFilename());
 //Files.write(path2,bytes);
-     //   String fileName = generateRandomName() + "." + (file.getContentType().split("/"))[1];
-        String fileName = file.getOriginalFilename() ;
+       String fileName = generateRandomName() + "." + (file.getContentType().split("/"))[1];
+     //   String fileName = file.getOriginalFilename() ;
         String completePath = userDirectory + subPath;
         Path path = Paths.get(completePath);
 
@@ -46,7 +46,7 @@ public class ServiceFile {
             Files.copy(file.getInputStream(), path.resolve(fileName));
 
         } catch (Exception exception) {
-            System.out.println("error while uploading image catch:: " + exception.getMessage());
+            System.out.println("errur lors de chargement image:: " + exception.getMessage());
 
         }
         return fileName;
