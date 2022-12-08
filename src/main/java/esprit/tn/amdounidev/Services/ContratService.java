@@ -3,17 +3,17 @@ package esprit.tn.amdounidev.Services;
 import esprit.tn.amdounidev.Repository.ContratRepository;
 import esprit.tn.amdounidev.Repository.EquipeRepository;
 import esprit.tn.amdounidev.Repository.EtudiantRepository;
+import esprit.tn.amdounidev.Repository.UniversiteRepository;
 import esprit.tn.amdounidev.entities.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -30,10 +30,12 @@ public class ContratService implements IContratService {
     @Autowired
     EquipeRepository equipeRepository;
 
+    @Autowired
+    UniversiteRepository universiteRepository;
 
     @Override
-    public List<Contrat> retrieveAllContrats() {
-        return contratRepository.findAll();
+    public Page<Contrat> retrieveAllContrats(Pageable pageable) {
+        return contratRepository.findAll(pageable);
     }
 
     @Override
@@ -42,18 +44,8 @@ public class ContratService implements IContratService {
     }
 
     @Override
-    public Contrat updateContart(Contrat contrat, Long id) {
-        Optional<Contrat> updateContrat = contratRepository.findById(id);
-        if (updateContrat.isPresent()) {
-            Long idCtrt = contrat.getIdContrat();
-            System.out.println(idCtrt);
-            contrat.setArchive(contrat.getArchive());
-            contrat.setDateDebutC(contrat.getDateDebutC());
-            contrat.setDateFinC(contrat.getDateFinC());
-            contrat.setMontantC(contrat.getMontantC());
-            contrat.setSpecailite(contrat.getSpecailite());
-            contratRepository.save(contrat);
-        }
+    public Contrat updateContart(Long id,Contrat contrat) {
+       contratRepository.save(contrat);
         return contrat;
     }
 
@@ -63,7 +55,7 @@ public class ContratService implements IContratService {
     }
 
     @Override
-    public void removeContrat(Long idContrat) {
+    public void removeContratById(Long idContrat) {
         contratRepository.deleteById(idContrat);
     }
 
@@ -104,11 +96,31 @@ public class ContratService implements IContratService {
     }
 
     @Override
-    public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
-
-
-        return 0;
+    public Float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate, Long idUniversite) {
+        float montant=0;
+        Universite universite=universiteRepository.findById(idUniversite).get();
+        for (Departement d: universite.getDepartments()){
+            for (Etudiant e:d.getEtudiants()){
+                for(Contrat c:e.getContrats()){
+                    montant+=c.getMontantC();
+                    if(c.getArchive()==false){
+                    if(startDate.after(c.getDateDebutC()) && endDate.after(c.getDateFinC())){
+                        if (c.getSpecailite()==Specailite.IA){
+                            montant=montant+300;
+                        }else if (c.getSpecailite()==Specailite.RESEAU){
+                            montant=montant+350;
+                        }else if (c.getSpecailite()==Specailite.CLOUD){
+                            montant=montant+400;
+                        }else if(c.getSpecailite()==Specailite.SECURITE){
+                            montant=montant+450;
+                        }
+                    }
+                }}
+            }
+        }
+        return montant;
     }
+
 
     @Override
     public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
@@ -140,6 +152,16 @@ public class ContratService implements IContratService {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<Contrat> contratsArchives() {
+        return contratRepository.nbrContrat();
+    }
+
+    @Override
+    public List<Contrat> contratsNonArchives() {
+        return contratRepository.contratsNonArchives();
     }
 
     public long calculDiff(Date date2) {

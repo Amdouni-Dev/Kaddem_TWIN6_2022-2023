@@ -3,6 +3,7 @@ package esprit.tn.amdounidev.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,18 +19,16 @@ public class Reclamation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idRec")
     private long id;
-    @Temporal(TemporalType.DATE)
     @Column(name = "dateRec")
-    private Date date;
+    private LocalDate date= LocalDate.now();
     @Column(name = "titreRec")
     private String title;
     @Column(name = "messageRec")
     private String message;
     @Column(name = "imageRec")
     private String image;
-    @Column(name = "traiteRec")
-    @Enumerated(EnumType.STRING)
-    private EtatReclamation etat;
+    @Column(name = "etat", columnDefinition = "boolean default false")
+    private Boolean etat=false;
 
     @ManyToOne
     Etudiant etudiant;

@@ -23,8 +23,8 @@ public class Contrat {
     @Temporal(TemporalType.DATE)
     @Column(name ="dateFinC")
     private Date dateFinC;
-    @Column(name="archive")
-    private Boolean archive;
+    @Column(name="archive", columnDefinition = "boolean default false")
+    private Boolean archive=false;
     @Column(name="montantC")
     private Float montantC;
     @Enumerated(EnumType.ORDINAL)

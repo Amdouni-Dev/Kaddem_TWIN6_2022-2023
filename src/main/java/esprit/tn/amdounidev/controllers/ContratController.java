@@ -12,10 +12,16 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @RestController
 @RequestMapping("/Contrat")
@@ -49,9 +55,9 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Update failed",content = @Content)
     })
-    @PutMapping("updateContrat")
-    public  Contrat updateContrat(@RequestBody Contrat contrat, @PathVariable("idCtrt") Long id){
-        return contratService.updateContart(contrat,id);
+    @PutMapping("updateContrat/{idCtrt}")
+    public  Contrat updateContrat(@PathVariable("idCtrt") Long id,@RequestBody Contrat contrat){
+        return contratService.updateContart(id,contrat);
     }
 
 
@@ -77,9 +83,9 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Delete failed",content = @Content)
     })
-    @DeleteMapping("deleteById")
+    @DeleteMapping("deleteById/{idCtrt}")
     public void deleteContratById(@PathVariable("idCtrt") Long id){
-        contratService.retrieveContrat(id);
+        contratService.removeContratById(id);
     }
 
 
@@ -92,10 +98,43 @@ public class ContratController {
             @ApiResponse(responseCode = "404", description = "Empty List !",content = @Content)
     })
     @GetMapping("listeContrats")
-    public List<Contrat> listeContrats(){
-        return contratService.retrieveAllContrats();
+    public Page<Contrat> listeContrats(@RequestParam(name = "page", defaultValue = "0")int page,
+                                        @RequestParam(name="size", defaultValue = "5") int size) {
+        PageRequest pageRequest = PageRequest.of(page, size);
+        Page<Contrat> pageResult = contratService.retrieveAllContrats(pageRequest);
+        return pageResult;
+
     }
 
+    /********************************Get Contrats Non Archives************************************/
+    @Operation(summary = "Get All Contrats Non Archives", description = "Retourne la liste des Contrats Non Archives")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the Contrat",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Contrat.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
+            @ApiResponse(responseCode = "404", description = "Empty List !",content = @Content)
+    })
+    @GetMapping("listeContratsNonArchives")
+    public List<Contrat> listeContratsNonArchives() {
+        List<Contrat> liste = contratService.contratsNonArchives();
+        return liste;
+
+    }
+
+    /********************************Get Contrats Non Archives************************************/
+    @Operation(summary = "Get All Contrats Archives", description = "Retourne la liste des Contrats Archives")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the Contrat",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Contrat.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
+            @ApiResponse(responseCode = "404", description = "Empty List !",content = @Content)
+    })
+    @GetMapping("listeContratsArchives")
+    public List<Contrat> listeContratsArchives() {
+        List<Contrat> liste = contratService.contratsArchives();
+        return liste;
+
+    }
 
     /********************************Get Contrat************************************/
     @Operation(summary = "Get Contrat", description = "Retourne un Contrat par son id ")
@@ -140,7 +179,6 @@ public class ContratController {
         contratService.addAndAssignEtudiantToEquipeAndContract(etudiant,idC,idE);
     }
 
-
     /*******************************Affect Contrat To Etudiant***********************************/
     @Operation(summary = "Affect Contrat To Etudiant", description = "Affecter un contrat a un etudiant")
     @ApiResponses(value = {
@@ -154,4 +192,7 @@ public class ContratController {
                                                         @PathVariable("prenom") String prenom) {
         contratService.affectContratToEtudiant(contrat,nom,prenom);
     }
+
+    /*******************************Affect Contrat To Etudiant***********************************/
+
 }
