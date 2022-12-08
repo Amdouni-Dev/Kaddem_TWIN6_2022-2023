@@ -32,4 +32,4 @@ public interface IContratService {
     List<Contrat> contratsArchives();
     List<Contrat> contratsNonArchives();
 }
-/*SI*/
+
