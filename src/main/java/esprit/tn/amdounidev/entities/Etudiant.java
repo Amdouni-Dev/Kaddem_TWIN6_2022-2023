@@ -36,6 +36,7 @@ public class Etudiant implements Serializable {
     private Departement departement;
     @ManyToMany(mappedBy ="etudiants" )
     private List<Equipe> equipes;
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant")
     private Set<Thread> threads;
 

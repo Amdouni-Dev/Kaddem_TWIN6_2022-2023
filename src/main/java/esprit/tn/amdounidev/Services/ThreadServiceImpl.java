@@ -175,7 +175,7 @@ return thread;
         if(tr.findlikeTh(""+idT).getObject()!=null) {
             String[] tokens = tr.findlikeTh("" + idT).getObject().split(" ");
             for (String s : tokens) {
-                if (detector(s, "" + idE)) {
+                if (detector(s.trim(),""+ idE)) {
                     return true;
                 }
 
@@ -194,7 +194,7 @@ return thread;
             Thread t = this.tr.findlikeTh("" + idt);
             String y = t.getQuestion().trim();
             t.setQuestion(y);
-            t.setObject(i + " " + ide);
+            t.setObject(i +" "+ ide);
             return (this.updateThread(t));
         }
         return(new Thread());

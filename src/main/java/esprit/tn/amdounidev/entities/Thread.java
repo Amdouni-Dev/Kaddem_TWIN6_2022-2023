@@ -50,7 +50,6 @@ public class Thread implements Serializable {
 
 
     @ManyToOne
-    @JsonIgnore
     private Etudiant etudiant;
 
 }
