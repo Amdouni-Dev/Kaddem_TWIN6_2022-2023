@@ -12,7 +12,7 @@ public class PerformanceAspectEquipe {
         long start = System.currentTimeMillis();
         Object obj = pjp.proceed();
         long elapsedTime = System.currentTimeMillis() - start;
-        log.info("Method execution time: " + elapsedTime + " milliseconds.");
+        log.info("l'execution de la methode est fait durant : " + elapsedTime + " milliseconds.");
         return obj;
     }
 }

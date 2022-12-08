@@ -13,9 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/Thread")
 public class ThreadController {
 
@@ -24,13 +27,20 @@ public class ThreadController {
     @Autowired
     ThreadServiceImpl ThreadService;
 
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "302", description = "Thread list "),
-            @ApiResponse(responseCode = "500", description = "erreur serveur")})
-    @Operation(summary = "Threads ",description = "Thread list")
+
     @GetMapping("/")
-    public ResponseEntity<List<Thread>> findThreadList(){
-        return new ResponseEntity <List<Thread>>(rr.findAll(), HttpStatus.OK);
+    public ResponseEntity <List<Thread>> findThreadList(){
+
+//        return rr.findAll1();
+
+        List<Thread> list=new ArrayList<>();
+        for (Iterator<Thread> i = rr.findAll().iterator(); i.hasNext();) {
+            Thread item = i.next();
+            if (item.getEtudiant()!=null){
+                list.add(item);
+            }
+        }
+        return new ResponseEntity <List<Thread>>(list, HttpStatus.OK);
     }
 
 
@@ -38,6 +48,26 @@ public class ThreadController {
     public ResponseEntity<Thread> findThreadById(@PathVariable Long id) {
 
         return new ResponseEntity <>(ThreadService.findThreadById(id), HttpStatus.FOUND);
+    }
+
+    @GetMapping("et/{id}")
+    public ResponseEntity<String> findEtName(@PathVariable Long id) {
+
+        return new ResponseEntity <>(ThreadService.etudiantByName(id), HttpStatus.FOUND);
+    }
+
+    @GetMapping("like2/{id}/{ide}")
+    public Thread tLike(@PathVariable Long id,@PathVariable long ide) {
+
+        return ThreadService.like(id,(long) ide);
+
+    }
+
+    @GetMapping("like/{idt}/{ide}")
+    public boolean tLike1(@PathVariable long idt, @PathVariable long ide) {
+
+        return ThreadService.likedThread((long)idt,(long)ide);
+
     }
 
     @PostMapping("/AddThread")

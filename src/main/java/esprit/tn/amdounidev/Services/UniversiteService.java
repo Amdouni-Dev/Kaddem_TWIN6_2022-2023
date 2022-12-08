@@ -4,6 +4,7 @@ import esprit.tn.amdounidev.Repository.DepartementRepository;
 import esprit.tn.amdounidev.Repository.UniversiteRepository;
 import esprit.tn.amdounidev.entities.Departement;
 import esprit.tn.amdounidev.entities.Equipe;
+import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Universite;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,10 +42,21 @@ public class UniversiteService implements IUniversiteService {
 
     @Override
     public Universite updateUniversite(Universite universite, long id) {
-        log.info("modification d'Une Universite");
-            universite.setIdUniversite(id);
-            universite.setDate_update(LocalDateTime.now());
-            return UR.save(universite);
+
+
+        //  Equipe updateEquipe = equipeRepository.findById(idE).orElseThrow(()-> new IllegalArgumentException("Not Found"));
+        Universite universite1 = UR.findById(id).get();
+
+            universite1.setNomUniversite  (universite.getNomUniversite());
+            universite1.setEtatUniversite(universite.getEtatUniversite());
+            universite1.setReputationUniversite(universite.getReputationUniversite());
+            universite1.setSurfaceUniversite(universite.getSurfaceUniversite());
+        universite1.setDate_creation(LocalDateTime.now());
+        universite1.setDate_update(LocalDateTime.now());
+
+
+        UR.save(universite1);
+        return universite;
         }
 
     @Override

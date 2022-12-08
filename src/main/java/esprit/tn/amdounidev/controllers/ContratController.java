@@ -3,8 +3,6 @@ package esprit.tn.amdounidev.controllers;
 import esprit.tn.amdounidev.Services.ContratService;
 import esprit.tn.amdounidev.entities.Contrat;
 import esprit.tn.amdounidev.entities.Etudiant;
-import esprit.tn.amdounidev.entities.Tache;
-import esprit.tn.amdounidev.entities.Universite;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;

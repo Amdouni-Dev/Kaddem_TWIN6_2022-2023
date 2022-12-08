@@ -2,7 +2,10 @@ package esprit.tn.amdounidev.Services;
 
 import esprit.tn.amdounidev.entities.Projet;
 import esprit.tn.amdounidev.entities.Tache;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IProjetService {
@@ -16,7 +19,7 @@ public interface IProjetService {
     void deleteProjet(Long id);
     void deleteProjet(Projet d);
 
-    List<Projet> findAllProjet();
+    List<Projet> findAllProjet(int pageNo, int pageSize);
     Projet findProjetById(Long id);
     public void aassignProjetToTache(Long idProjet, Long idTache);
 
@@ -28,4 +31,8 @@ public interface IProjetService {
     public int findByTypeJEUVIDEOProjet();
 
     public Projet findProjectByName(String nom);
+    public int deleteAuto();
+    public Projet getProjetPerime();
+
+    public Projet retrieveProjet(Long id);
 }
