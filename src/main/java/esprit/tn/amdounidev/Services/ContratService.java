@@ -9,10 +9,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -82,12 +80,13 @@ public class ContratService implements IContratService {
     }
 
     @Override
-    public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
+    public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContrat, Long idEquipe) {
         //Etudiant (Slave) -- Contrat (Master)
         //Etudiant (Slave) -- Equipe (Master)
-        Contrat contrat = contratRepository.findById(Long.valueOf(idContrat)).get();
-        Equipe equipe = equipeRepository.findById(Long.valueOf(idEquipe)).get();
-        e=etudiantRepository.save(e);
+
+        Contrat contrat = contratRepository.findById(idContrat).get();
+        Equipe equipe = equipeRepository.findById(idEquipe).get();
+      //  e=etudiantRepository.save(e);
         contrat.setEtudiant(e);
         contratRepository.save(contrat);
         equipe.getEtudiants().add(e);
@@ -125,7 +124,8 @@ public class ContratService implements IContratService {
     @Override
     public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
         Etudiant e = contratRepository.EtudiantByNomAndPrenom(nomE,prenomE);
-        e.getContrats();
+        log.info("11111111111111yyyyyyyyyyyyyyyyyyyyyyyyyyyy",e.getNom());
+     //   e.getContrats();
         log.info("hello"+e.getContrats());
         if(e.getContrats().size()<5){
             e.getContrats().add(ce);

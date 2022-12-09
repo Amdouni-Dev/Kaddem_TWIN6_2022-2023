@@ -29,18 +29,18 @@ public class ThreadController {
 
 
     @GetMapping("/")
-    public ResponseEntity <List<Thread>> findThreadList(){
+    public List<Thread> findThreadList(){
 
-//        return rr.findAll1();
+     return (List<Thread>) rr.findAll1();
 
-        List<Thread> list=new ArrayList<>();
+       /* List<Thread> list=new ArrayList<>();
         for (Iterator<Thread> i = rr.findAll().iterator(); i.hasNext();) {
             Thread item = i.next();
             if (item.getEtudiant()!=null){
                 list.add(item);
             }
         }
-        return new ResponseEntity <List<Thread>>(list, HttpStatus.OK);
+        return new ResponseEntity <List<Thread>>(list, HttpStatus.OK);*/
     }
 
 

@@ -19,7 +19,7 @@ public interface ContratRepository extends JpaRepository<Contrat, Long> {
     @Query("select c from Contrat c where c.archive=false")
     List<Contrat> contratsNonArchives();
 
-    @Query("select e from Etudiant e where e.nom=?1 and e.prenom=?1")
+    @Query("select e from Etudiant e where e.nom=?1 and e.prenom=?2")
     Etudiant EtudiantByNomAndPrenom(String nom, String prenom);
 
 

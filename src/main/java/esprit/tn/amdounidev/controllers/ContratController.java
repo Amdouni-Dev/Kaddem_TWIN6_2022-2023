@@ -172,8 +172,8 @@ public class ContratController {
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
     @PostMapping("AssignEEqC")
-    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idCtrt") Integer idC,
-                                                        @PathVariable("idEquipe") Integer idE) {
+    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @RequestParam("idCtrt") Long idC,
+                                                        @RequestParam("idEquipe") Long idE) {
         contratService.addAndAssignEtudiantToEquipeAndContract(etudiant,idC,idE);
     }
 
@@ -185,13 +185,23 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
-    @PostMapping("AffectCToEtud/{nom}/{prenom}")
+    @PostMapping("AffectCToEtud")
     public void affectContratToEtudiant(@RequestBody Contrat contrat, @RequestParam("nom") String nom,
-                                                        @PathVariable("prenom") String prenom) {
+                                                        @RequestParam("prenom") String prenom) {
         contratService.affectContratToEtudiant(contrat,nom,prenom);
     }
 
     /*******************************Affect Contrat To Etudiant***********************************/
-
+    @Operation(summary = "Affect Contrat To Etudiant", description = "Affecter un contrat a un etudiant")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Added successfully",content = {
+                    @Content(mediaType = "application/json",schema = @Schema(implementation = Contrat.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
+            @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
+    })
+    @PostMapping("statusUpdate")
+    public void retrieveAndUpdateStatusContrat() {
+        contratService.retrieveAndUpdateStatusContrat();
+    }
 }
 

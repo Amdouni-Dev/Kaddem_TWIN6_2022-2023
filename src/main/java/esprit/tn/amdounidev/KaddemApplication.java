@@ -12,23 +12,24 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.event.EventListener;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
+import org.springframework.context.annotation.ComponentScan;
 import javax.mail.MessagingException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-//@Configuration
+
 ////@EnableAutoConfiguration
 //@EnableAspectJAutoProxy
-////@ComponentScan
+
 //
 //
 //
 //@EnableScheduling
 //@EnableBatchProcessing
 //@SpringBootApplication
-@EnableScheduling
+
 @EnableBatchProcessing
+@EnableScheduling
 @SpringBootApplication
 public class KaddemApplication {
     // private static String userDirectory = System.getProperty("user.dir");

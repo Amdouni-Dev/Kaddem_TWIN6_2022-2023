@@ -44,7 +44,18 @@ public class ExcelHelper {
                 row.createCell(4).setCellValue(equipe.getDetailEquipe().getThematique());
                 row.createCell(5).setCellValue(equipe.getIsValid());
                 row.createCell(6).setCellValue(equipe.getEtudiants().size());
-                row.createCell(7).setCellValue(equipe.getEtudiant().getNom());
+
+                if(equipe.getEtudiant()!=null){
+                    row.createCell(7).setCellValue(equipe.getEtudiant().getNom());
+
+                }
+                else{
+
+                    row.createCell(7).setCellValue("pas de responsable ");
+
+                }
+
+             //   row.createCell(7).setCellValue(equipe.getEtudiant().getNom());
                 row.createCell(8).setCellValue(equipe.getDetailEquipe().getDateCreation().toString());
                 row.createCell(9).setCellValue(equipe.getDetailEquipe().getDateActivation().toString());
 

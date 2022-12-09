@@ -20,8 +20,9 @@ public interface IContratService {
 
     Integer nbContratsValides(Date startDate, Date endDate);
 
-    Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer
-            idEquipe);
+
+
+    Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Long idContrat, Long idEquipe);
 
     Float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate, Long idUniversite);
 
