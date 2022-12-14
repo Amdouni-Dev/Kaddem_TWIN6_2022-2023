@@ -12,6 +12,7 @@ import java.util.Map;
 public interface IContratService {
 
     Page<Contrat> retrieveAllContrats(Pageable pageable);
+    List<Contrat> listeContrats();
     Contrat updateContart(Long id,Contrat contrat);
     Contrat addContart(Contrat ce);
     Contrat retrieveContrat (Long idContrat);

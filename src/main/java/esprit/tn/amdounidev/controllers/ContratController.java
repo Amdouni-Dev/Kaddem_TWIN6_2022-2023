@@ -1,5 +1,7 @@
 package esprit.tn.amdounidev.controllers;
 
+import com.lowagie.text.DocumentException;
+import esprit.tn.amdounidev.Services.ContratPdfGenerator;
 import esprit.tn.amdounidev.Services.ContratService;
 import esprit.tn.amdounidev.entities.Contrat;
 import esprit.tn.amdounidev.entities.Etudiant;
@@ -15,6 +17,10 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -172,8 +178,8 @@ public class ContratController {
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
     @PostMapping("AssignEEqC")
-    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @RequestParam("idCtrt") Long idC,
-                                                        @RequestParam("idEquipe") Long idE) {
+    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idCtrt") Long idC,
+                                                        @PathVariable("idEquipe") Long idE) {
         contratService.addAndAssignEtudiantToEquipeAndContract(etudiant,idC,idE);
     }
 
@@ -185,23 +191,39 @@ public class ContratController {
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
             @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
     })
-    @PostMapping("AffectCToEtud")
+    @PostMapping("AffectCToEtud/{nom}/{prenom}")
     public void affectContratToEtudiant(@RequestBody Contrat contrat, @RequestParam("nom") String nom,
-                                                        @RequestParam("prenom") String prenom) {
+                                                        @PathVariable("prenom") String prenom) {
         contratService.affectContratToEtudiant(contrat,nom,prenom);
     }
 
     /*******************************Affect Contrat To Etudiant***********************************/
-    @Operation(summary = "Affect Contrat To Etudiant", description = "Affecter un contrat a un etudiant")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Added successfully",content = {
-                    @Content(mediaType = "application/json",schema = @Schema(implementation = Contrat.class)) }),
-            @ApiResponse(responseCode = "400", description = "Invalid id supplied",content = @Content),
-            @ApiResponse(responseCode = "404", description = "Add failed",content = @Content)
-    })
-    @PostMapping("statusUpdate")
-    public void retrieveAndUpdateStatusContrat() {
-        contratService.retrieveAndUpdateStatusContrat();
+
+
+    /*******************************Contrat PDF***********************************/
+    @GetMapping("/exportPDFC")
+
+    public void generatePdfFile(HttpServletResponse response) throws DocumentException, IOException {
+
+        response.setContentType("application/pdf");
+
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+
+        String currentDateTime = dateFormat.format(new Date());
+
+        String headerkey = "Content-Disposition";
+
+        String headervalue = "attachment; filename=student" + currentDateTime + ".pdf";
+
+        response.setHeader(headerkey, headervalue);
+
+        List <Contrat> listofC = contratService.listeContrats();
+
+        ContratPdfGenerator generator = new ContratPdfGenerator();
+
+        generator.generate(listofC, response);
+
     }
+
 }
 

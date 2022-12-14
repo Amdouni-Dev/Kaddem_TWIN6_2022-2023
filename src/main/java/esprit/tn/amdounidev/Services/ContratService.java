@@ -37,6 +37,11 @@ public class ContratService implements IContratService {
     }
 
     @Override
+    public List<Contrat> listeContrats() {
+        return contratRepository.findAll();
+    }
+
+    @Override
     public Contrat addContart(Contrat ce) {
         return contratRepository.save(ce);
     }
