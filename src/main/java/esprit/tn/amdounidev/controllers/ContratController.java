@@ -200,7 +200,30 @@ public class ContratController {
     /*******************************Affect Contrat To Etudiant***********************************/
 
 
+    /*******************************Contrat PDF***********************************/
+    @GetMapping("/exportPDFC")
 
+    public void generatePdfFile(HttpServletResponse response) throws DocumentException, IOException {
+
+        response.setContentType("application/pdf");
+
+        DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
+
+        String currentDateTime = dateFormat.format(new Date());
+
+        String headerkey = "Content-Disposition";
+
+        String headervalue = "attachment; filename=student" + currentDateTime + ".pdf";
+
+        response.setHeader(headerkey, headervalue);
+
+        List <Contrat> listofC = contratService.listeContrats();
+
+        ContratPdfGenerator generator = new ContratPdfGenerator();
+
+        generator.generate(listofC, response);
+
+    }
 
 }
 
